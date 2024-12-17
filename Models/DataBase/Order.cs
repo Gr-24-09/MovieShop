@@ -7,9 +7,11 @@ namespace MovieShop.Models.DataBase
     public class Order
     {
         public int Id { get; set; }
+
         [Required(ErrorMessage = "Order Date is required.")]
         [Display(Name = "Order Date")]
-        public string OrderDate { get; set; } = string.Empty;
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy")]
+        public DateTime OrderDate { get; init; } = DateTime.Now;
 
         [ForeignKey("Customer")]
         [Required(ErrorMessage = "Customer Id is required.")]
