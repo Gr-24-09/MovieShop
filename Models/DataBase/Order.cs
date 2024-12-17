@@ -16,6 +16,7 @@ namespace MovieShop.Models.DataBase
         [Display(Name = "Customer Id ")]
         public int CustomerId { get; set; }
 
+        [Required]
         public decimal TotalPrice { get; set; }
 
         public Customer? Customer { get; set; }
