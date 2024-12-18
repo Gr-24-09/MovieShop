@@ -1,7 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using MovieShop.Data;
+using MovieShop.Models;
 using MovieShop.Models.DataBase;
 using MovieShop.Services;
+using System.Reflection.Metadata;
 
 namespace MovieShop.Controllers
 {
@@ -42,14 +46,27 @@ namespace MovieShop.Controllers
         {
             return View();
         }
+       
+        public IActionResult Top5NewestMovies()
+        {
 
+            return View(_movieService.Top5Newest());
+        }
+        public IActionResult Top5OldestMovies()
+        {
 
+            return View(_movieService.Top5Oldest());
+        }
+        public IActionResult Top5CheapestMovies()
+        {
 
+            return View(_movieService.Top5Cheapest());
+        }
 
+        public IActionResult AllMovies()
+        {
 
-
-
-
-
+            return View(_movieService.GetAllMovies());
+        }
     }
 }

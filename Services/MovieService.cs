@@ -7,13 +7,10 @@ namespace MovieShop.Services
     public class MovieService : IMovieService
     {
         private readonly MovieDbContext _db;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-
-        List<Movie> movieList = new List<Movie>();
-        public MovieService(MovieDbContext db, IHttpContextAccessor httpContextAccessor)
+        public MovieService(MovieDbContext db)
         {
             _db = db;
-            _httpContextAccessor = httpContextAccessor;
+            
         }
         public void Create(Movie movie)
         {

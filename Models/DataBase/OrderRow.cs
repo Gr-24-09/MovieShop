@@ -22,7 +22,7 @@ namespace MovieShop.Models.DataBase
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        public virtual Order Order { get; set; }
-        public virtual Movie Movie { get; set; }
+        public virtual Order? Order { get; set; }
+        public virtual Movie? Movie { get; set; }
     }
 }

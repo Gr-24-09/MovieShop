@@ -4,7 +4,6 @@ namespace MovieShop.Services
 {
     public interface IMovieService
     {
-        
         public List<Movie> GetAllMovies();
         public List<Movie> OnDemandMoviesBasedOnOrders();
         public List<Movie> Top5Oldest();
