@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MovieShop.Data
 {
-    public class MovieDBContext : DbContext
+    public class MovieDbContext : DbContext
     {
         public virtual DbSet<Customer> Customers { get; set; } 
         public virtual DbSet<Movie> Movies { get; set; }
