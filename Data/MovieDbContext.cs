@@ -10,7 +10,7 @@ namespace MovieShop.Data
         public virtual DbSet<OrderRow> OrderRows { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public MovieDBContext(DbContextOptions options) : base(options)
+        public MovieDbContext(DbContextOptions options) : base(options)
         {
 
         }
