@@ -18,7 +18,7 @@ namespace MovieShop.Models.DataBase
         [Display(Name = "Customer Id ")]
         public int CustomerId { get; set; }
 
-        public Customer? Customer { get; set; }
+        public virtual Customer? Customer { get; set; }
 
         public List<OrderRow> OrderRows { get; set; } = new List<OrderRow>() ;
 
