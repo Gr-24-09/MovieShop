@@ -1,17 +1,16 @@
 ﻿using MovieShop.Models.DataBase;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace MovieShop.Data
 {
-    public class MovieDBContext : DbContext
+    public class MovieDbContext : DbContext
     {
-        public virtual DbSet<Customer> Customers { get; set; } // NALINI
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Movie> Movies { get; set; }
         public virtual DbSet<OrderRow> OrderRows { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public MovieDBContext(DbContextOptions options) : base(options)
+        public MovieDbContext(DbContextOptions options) : base(options)
         {
 
         }
