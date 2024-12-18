@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MovieShop.Models.DataBase
 {
@@ -6,13 +7,18 @@ namespace MovieShop.Models.DataBase
     {
         public int Id { get; set; }
 
-        [Required]
+        [ForeignKey("Order")]
+        [Required(ErrorMessage = "Order Id is required.")]
+        [Display(Name = "Order Id")]
         public int OrderId { get; set; }
 
-        [Required]
+        [ForeignKey("Movie")]
+        [Required(ErrorMessage = "Movie Id is required.")]
+        [Display(Name = "Movie Id")]
         public int MovieId { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Price of Movie is required.")]
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
