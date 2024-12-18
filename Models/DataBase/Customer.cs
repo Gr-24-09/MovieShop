@@ -9,12 +9,22 @@ namespace MovieShop.Models.DataBase
         [Required(ErrorMessage = "First name is required.")]
         [StringLength(20, ErrorMessage = "First name can't be longer than 20 characters.")]
         [Display(Name = "First Name")]
-        public string FirstName { get; set; } = string.Empty;
+        public string FirstNameBillingAddress { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Last name is required.")]
         [StringLength(20, ErrorMessage = "Last name can't be longer than 20 characters.")]
         [Display(Name = "Last Name")]
-        public string LastName { get; set; } = string.Empty;
+        public string LastNameBillingAddress { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "First name is required.")]
+        [StringLength(20, ErrorMessage = "First name can't be longer than 20 characters.")]
+        [Display(Name = "First Name")]
+        public string FirstNameDeliveryAddress { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Last name is required.")]
+        [StringLength(20, ErrorMessage = "Last name can't be longer than 20 characters.")]
+        [Display(Name = "Last Name")]
+        public string LastNameDeliveryAddress { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Billing Address is required.")]
         [StringLength(50, ErrorMessage = "Billing Address can't be longer than 50 characters.")]
