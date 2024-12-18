@@ -1,8 +1,8 @@
 ﻿using MovieShop.Models.DataBase;
 using Microsoft.EntityFrameworkCore;
-using MovieShop.Models.DataBase;
 
-namespace CodeFirstAproach.Data
+
+namespace MovieShop.Data
 {
     public class MovieDBContext : DbContext
     {
