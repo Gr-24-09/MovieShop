@@ -46,7 +46,39 @@ namespace MovieShop.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie movie)
+        {
+            if (ModelState.IsValid)
+            {
+                _movieService.Delete(movie);
+                return RedirectToAction("MovieRemoved");
+            }
+
+            return View();
+        }
+        public IActionResult MovieRemoved()
+        {
+            return View();
+        }
+
+
+
        
+        public IActionResult DeleteMovies(int id)
+        {
+             _movieService.Delete(id);
+
+            return View();
+        }
         
+
     }
 }

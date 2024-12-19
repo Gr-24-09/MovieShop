@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MovieShop.Migrations
 {
     /// <inheritdoc />
-    public partial class removemigration : Migration
+    public partial class ínitial2 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
