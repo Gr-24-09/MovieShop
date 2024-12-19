@@ -13,7 +13,6 @@ public class Program
         builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
 
@@ -24,6 +23,7 @@ public class Program
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
+
 
         var app = builder.Build();
         // Configure the HTTP request pipeline.
