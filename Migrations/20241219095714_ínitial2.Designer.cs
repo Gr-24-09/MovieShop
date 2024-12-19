@@ -12,8 +12,8 @@ using MovieShop.Data;
 namespace MovieShop.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20241218143333_remove-migration")]
-    partial class removemigration
+    [Migration("20241219095714_ínitial2")]
+    partial class ínitial2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
