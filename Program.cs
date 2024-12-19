@@ -15,6 +15,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
+        builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
 
         // Sessions setup
         builder.Services.AddSession(options =>
