@@ -13,7 +13,7 @@ public class Program
         builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        //builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of service
+        builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of service
         var app = builder.Build();
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
