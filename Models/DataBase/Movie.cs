@@ -16,7 +16,6 @@ namespace MovieShop.Models.DataBase
 
         [Required(ErrorMessage = "Release Year of Movie is required.")]
         [Display(Name ="Released Year")]
-        [StringLength(10)]
         public int ReleaseYear { get; set; }
 
         [Required(ErrorMessage = "Price of Movie is required.")]
