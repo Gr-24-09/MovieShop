@@ -13,7 +13,7 @@ namespace MovieShop.Services
         public void Create(Movie movie);
 
         public void Delete(Movie movie);
-        public void Delete(int id);
+        
 
 
     }
