@@ -36,20 +36,20 @@ namespace MovieShop.Services
         
         public List<Movie> Top5Newest()
         {
-            var resultNew = _db.Movies.OrderByDescending(x => x.ReleaseYear).ToList();
+            var resultNew = _db.Movies.OrderByDescending(x => x.ReleaseYear).Take(5).ToList();
 
             return resultNew;
         }
         public List<Movie> Top5Cheapest()
         {
-            var resultCheap = _db.Movies.OrderBy(x => x.Price).ToList();
+            var resultCheap = _db.Movies.OrderBy(x => x.Price).Take(5).ToList();
 
             return resultCheap;
 
         }
         public List<Movie> Top5Oldest()
         {
-            var resultOld = _db.Movies.OrderBy(x => x.ReleaseYear).ToList();
+            var resultOld = _db.Movies.OrderBy(x => x.ReleaseYear).Take(5).ToList();
 
             return resultOld;
 
