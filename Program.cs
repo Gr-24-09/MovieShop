@@ -10,11 +10,10 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new AggregateException("Default connection not found");
 
-        builder.Services.AddDbContext<MovieDbContext>(opt => opt.UseSqlServer(connectionString));
-       
+        builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        //builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of service
+        builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of service
         var app = builder.Build();
 
 

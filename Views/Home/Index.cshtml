@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model MovieShop.Models.FrontPageQueriesDisplay
+
+
+@{
+    ViewData["Title"] = "Index";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="bg-warning">
+        <partial name="_movieListPartial" model="@Model.Top5Latest">New Releases</partial>
+    </div>
 </div>
+<hr />
+<br />
+<div>
+    <div class="bg-info">
+        <partial name="_movieListPartial" model="Model.Top5Oldest">Classical Movies</partial>
+    </div>
+</div>
+<hr />
+<br />
+<div>
+    <div class="bg-success">
+        <partial name="_movieListPartial" model="@Model.Top5Cheapest">Low-Priced Movies</partial>
+    </div>
+</div>
+<br />
+<hr />
+<div>
+    <div class="bg-primary">
+        <partial name="_movieListPartial" model="@Model.AllMovies">All Movies</partial>
+    </div>
+</div>
+<hr />
