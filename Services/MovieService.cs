@@ -54,13 +54,17 @@ namespace MovieShop.Services
             return resultOld;
 
         }
-        public void Delete(Movie movie)
+
+        
+
+        public void Delete(int id)
         {
-            _db.Movies.Remove(movie);
-            _db.SaveChanges();
-        }
-
-
-
+            var Movie = _db.Movies.FirstOrDefault(x => x.Id == id);
+            if (Movie != null)
+            {
+                _db.Movies.Remove(Movie);
+                _db.SaveChanges();
+            }
+       }
     }
 }
