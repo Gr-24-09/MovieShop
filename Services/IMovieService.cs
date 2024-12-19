@@ -12,5 +12,7 @@ namespace MovieShop.Services
         public List<Movie> TopCustomerWhoMadeExpensiveOrder();
         public void Create(Movie movie);
         public void Delete(Movie movie);
+        public void Delete(int id);
+
     }
 }
