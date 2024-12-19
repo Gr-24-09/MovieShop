@@ -61,6 +61,7 @@ namespace MovieShop.Services
             _db.SaveChanges();
      
 
+
         public void Delete(int id)
         {
             var Movie = _db.Movies.FirstOrDefault(x => x.Id == id);
@@ -69,6 +70,8 @@ namespace MovieShop.Services
                 _db.Movies.Remove(Movie);
                 _db.SaveChanges();
             }
+
        }
+
     }
 }
