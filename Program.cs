@@ -13,7 +13,19 @@ public class Program
         builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
         // Add services to the container.
         builder.Services.AddControllersWithViews();
-        builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of service
+        builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
+        builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
+        builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
+
+        // Sessions setup
+        builder.Services.AddSession(options =>
+        {
+            options.IdleTimeout = TimeSpan.FromMinutes(30);
+            options.Cookie.HttpOnly = true;
+            options.Cookie.IsEssential = true;
+        });
+
+
         var app = builder.Build();
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -25,7 +37,7 @@ public class Program
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
-        //app.UseSession();
+        app.UseSession();
         app.UseCookiePolicy();
         app.UseRouting();
         app.UseAuthorization();

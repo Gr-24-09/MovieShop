@@ -46,6 +46,7 @@ namespace MovieShop.Controllers
         {
             return View();
         }
+
         [HttpGet]
         public IActionResult Delete()
         {
@@ -68,6 +69,16 @@ namespace MovieShop.Controllers
             return View();
         }
 
+
+
+       
+        public IActionResult DeleteMovies(int id)
+        {
+             _movieService.Delete(id);
+
+            return View();
+        }
+        
 
     }
 }
