@@ -54,16 +54,26 @@ namespace MovieShop.Services
             return resultOld;
 
         }
-
-
-        
-
-        public void Delete(Movie movie)
+        public Movie GetMovieById(int id)
         {
-            _db.Movies.Remove(movie);
-            _db.SaveChanges();
-
+            var movie = _db.Movies.FirstOrDefault(x => x.Id == id);
+            return movie;
         }
 
+        public void Copy(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x=>x.Id==id);
+            var movie = new Movie()
+            {
+                Title = data.Title,
+                Director = data.Director,
+                ReleaseYear = data.ReleaseYear,
+                Price = data.Price
+            };
+            _db.Movies.Add(movie);
+            _db.SaveChanges();
+        }
+
+        
     }
 }

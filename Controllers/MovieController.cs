@@ -47,22 +47,19 @@ namespace MovieShop.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult Delete()
-        {
-
-            return View();
-        }
-        [HttpPost]
-        public IActionResult Delete(int id)
-        {
-            _movieService.Delete(id);
-            return RedirectToAction("MovieRemoved");
-        }
         public IActionResult MovieRemoved()
         {
             return View();
         }
+
+        public IActionResult Delete(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
+            _db.Movies.Remove(data);
+            _db.SaveChanges();
+            return RedirectToAction("MovieRemoved");
+        }
+        
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -84,24 +81,29 @@ namespace MovieShop.Controllers
             }
             return RedirectToAction("Index");
         }
-        [HttpGet]
         public IActionResult CopyAMovie(int id)
         {
-            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
-            return View(data);
+            _movieService.Copy(id);
+            return RedirectToAction("MovieSuccess");
         }
-        [HttpPost]
-        public IActionResult CopyAMovie(Movie movie)
+
+        public IActionResult Details(int id)
         {
-            var data = _db.Movies.FirstOrDefault(x => x.Id == movie.Id);
-            if (data != null)
-            {
-                _movieService.Create(movie);
-                return RedirectToAction("MovieSuccess");
-            }
-            return View();
-        } 
-        
+            // get the movie by id
+            // return movie to the view
+            var movie = _movieService.GetMovieById(id);
+            return View(movie);
+        }
+
+        //public IActionResult Find(Movie movie)
+        //{
+            
+        //    var data1 = _db.Movies.FirstOrDefault(x=>x.Id == id);
+        //    var data2= _db.Movies.FirstOrDefault(x => x.Title == Title);
+        //    var data3 = _db.Movies.FirstOrDefault(x => x.Director == Director);
+        //    var data4 = _db.Movies.FirstOrDefault(x => x.ReleaseYear == ReleaseYear);
+        //    return View();
+        //}
 
     }
 }
