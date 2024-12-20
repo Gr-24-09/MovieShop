@@ -55,11 +55,15 @@ namespace MovieShop.Services
 
         }
 
+
+        
+
         public void Delete(Movie movie)
         {
             _db.Movies.Remove(movie);
             _db.SaveChanges();
 
         }
+
     }
 }

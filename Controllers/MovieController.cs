@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MovieShop.Data;
 using MovieShop.Models;
@@ -46,7 +47,6 @@ namespace MovieShop.Controllers
         {
             return View();
         }
-
         [HttpGet]
         public IActionResult Delete()
         {
@@ -54,25 +54,53 @@ namespace MovieShop.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Delete(Movie movie)
+        public IActionResult Delete(int id)
         {
-            if (ModelState.IsValid)
-            {
-                _movieService.Delete(movie);
-                return RedirectToAction("MovieRemoved");
-            }
-
-            return View();
+            _movieService.Delete(id);
+            return RedirectToAction("MovieRemoved");
         }
         public IActionResult MovieRemoved()
         {
             return View();
         }
-
-
-
-       
-    
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
+            return View(data);
+            
+        }
+        [HttpPost]
+        public IActionResult Edit(Movie movie)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == movie.Id);
+            if (data != null)
+            {
+                data.Title = movie.Title;
+                data.Director = movie.Director;
+                data.ReleaseYear = movie.ReleaseYear;
+                data.Price = movie.Price;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public IActionResult CopyAMovie(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
+            return View(data);
+        }
+        [HttpPost]
+        public IActionResult CopyAMovie(Movie movie)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == movie.Id);
+            if (data != null)
+            {
+                _movieService.Create(movie);
+                return RedirectToAction("MovieSuccess");
+            }
+            return View();
+        } 
         
 
     }
