@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Data;
+using MovieShop.Middleware;
 using MovieShop.Services;
 public class Program
 {
@@ -10,19 +11,24 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new AggregateException("Default connection not found");
 
-        builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
-        // Add services to the container.
+        builder.Services.AddDbContext<MovieDbContext>(opt => opt.UseSqlServer(connectionString));
+       
+        // ADD SERVICES
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
 
-        // Sessions setup
+        // SESSIONS SETUP
+        builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(options =>
         {
             options.IdleTimeout = TimeSpan.FromMinutes(30);
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
+        
+
+
         var app = builder.Build();
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
@@ -33,9 +39,12 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-        app.UseStaticFiles();
-        app.UseSession();
+        app.UseStaticFiles();  
+        app.UseMiddleware<SessionInitializationMiddleware>();        // Initialize Sessions in Middleware folder
+        app.UseSession();                                            // Sessions
+        app.MapControllers();
         app.UseCookiePolicy();
+
         app.UseRouting();
         app.UseAuthorization();
 

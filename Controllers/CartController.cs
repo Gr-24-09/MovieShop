@@ -2,6 +2,7 @@
 using MovieShop.Data;
 using MovieShop.Models.DataBase;
 using MovieShop.Services;
+using MovieShop.Models.ViewModels;
 
 namespace MovieShop.Controllers
 {
@@ -16,19 +17,20 @@ namespace MovieShop.Controllers
             _db = db;
             _logger = logger;
         }
-     
+
         public IActionResult Index()
         {
-            //var cartItems = _cartService.GetCartMovies(HttpContext.Session); // TODO : Add Session logic for cart.
-            //var totalPrice = _cartService.GetTotalPrice(HttpContext.Session);
+            var cartItems = _cartService.GetCartMovies(HttpContext.Session); // TODO : Add Session logic for cart.
+            var totalPrice = _cartService.GetTotalPrice(HttpContext.Session);
 
-            //var model = new CartViewModel // TODO : Create View Model for CartViewModel
-            //{
-            //    Items = cartItems,
-            //    TotalPrice = totalPrice
-            //};
 
-            return View(); // TODO: return View(model) after fixes.
+            var model = new CartViewModel 
+            {
+                ListMovies = cartItems,
+                TotalPrice = totalPrice
+            };
+
+            return View(model); // TODO: return View(model) after fixes.
         }
         public IActionResult AddProductToCart(ISession session, Movie item) 
         {
