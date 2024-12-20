@@ -10,7 +10,7 @@ namespace MovieShop.Services
         public MovieService(MovieDbContext db)
         {
             _db = db;
-            
+
         }
         public void Create(Movie movie)
         {
@@ -26,14 +26,14 @@ namespace MovieShop.Services
         {
 
             return new List<Movie>();
-        
+
         }
         public List<Movie> OnDemandMoviesBasedOnOrders()
         {
 
             return new List<Movie>();
         }
-        
+
         public List<Movie> Top5Newest()
         {
             var resultNew = _db.Movies.OrderByDescending(x => x.ReleaseYear).Take(5).ToList();
@@ -62,28 +62,8 @@ namespace MovieShop.Services
         {
             _db.Movies.Remove(movie);
             _db.SaveChanges();
-     
 
+        }
 
-        public void Delete(int id)
-        {
-            var Movie = _db.Movies.FirstOrDefault(x => x.Id == id);
-            if (Movie != null)
-            {
-                _db.Movies.Remove(Movie);
-                _db.SaveChanges();
-            }
-
-       }
-
-        public void Delete(int id)
-        {
-            var Movie = _db.Movies.FirstOrDefault(x => x.Id == id);
-            if (Movie != null)
-            {
-                _db.Movies.Remove(Movie);
-                _db.SaveChanges();
-            }
-       }
     }
 }

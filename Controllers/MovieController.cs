@@ -100,12 +100,8 @@ namespace MovieShop.Controllers
                 return RedirectToAction("MovieSuccess");
             }
             return View();
-        }
+        } 
+        
 
-        public IActionResult Details(int id)
-        {
-
-            return RedirectToAction("Index");
-        }
     }
 }
