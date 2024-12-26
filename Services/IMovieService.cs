@@ -12,7 +12,7 @@ namespace MovieShop.Services
         public List<Movie> Top5Cheapest();
         public void Create(Movie movie);
 
-        public void Delete(int id);
+        
 
 
         public void Delete(Movie movie);
