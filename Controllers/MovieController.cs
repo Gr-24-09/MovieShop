@@ -95,15 +95,17 @@ namespace MovieShop.Controllers
             return View(movie);
         }
 
-        //public IActionResult Find(Movie movie)
-        //{
-            
-        //    var data1 = _db.Movies.FirstOrDefault(x=>x.Id == id);
-        //    var data2= _db.Movies.FirstOrDefault(x => x.Title == Title);
-        //    var data3 = _db.Movies.FirstOrDefault(x => x.Director == Director);
-        //    var data4 = _db.Movies.FirstOrDefault(x => x.ReleaseYear == ReleaseYear);
-        //    return View();
-        //}
+        public IActionResult Find(int id,string title,string director,int ryear)
+        {
+
+            FindMovie obj = new FindMovie();
+            obj.Movieid = _movieService.GetMovieById(id);
+            obj.Title = _movieService.GetMovieByTitle(title);
+            obj.Director = _movieService.GetMovieByDirector(director);
+            obj.ryear = _movieService.GetMovieByReleaseYear(ryear);
+
+            return View(obj);
+        }
 
     }
 }

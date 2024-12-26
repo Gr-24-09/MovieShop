@@ -59,6 +59,21 @@ namespace MovieShop.Services
             var movie = _db.Movies.FirstOrDefault(x => x.Id == id);
             return movie;
         }
+        public Movie GetMovieByTitle(string title)
+        {
+            var movie = _db.Movies.FirstOrDefault(x => x.Title == title);
+            return movie;
+        }
+        public Movie GetMovieByDirector(string director)
+        {
+            var movie = _db.Movies.FirstOrDefault(x => x.Director == director);
+            return movie;
+        }
+        public Movie GetMovieByReleaseYear(int ryear)
+        {
+            var movie = _db.Movies.FirstOrDefault(x => x.ReleaseYear == ryear);
+            return movie;
+        }
 
         public void Copy(int id)
         {
