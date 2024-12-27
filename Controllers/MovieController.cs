@@ -97,17 +97,17 @@ namespace MovieShop.Controllers
             return View(movie);
         }
 
-        public IActionResult Find(int id,string title,string director,int ryear)
-        {
+        //public IActionResult Find(int id,string title,string director,int ryear)
+        //{
 
-            FrontPageQueriesDisplay obj = new FrontPageQueriesDisplay();
-            obj.Movieid = _movieService.GetMovieById(id);
-            obj.Title = _movieService.GetMovieByTitle(title);
-            obj.Director = _movieService.GetMovieByDirector(director);
-            obj.ryear = _movieService.GetMovieByReleaseYear(ryear);
+        //    FrontPageQueriesDisplay obj = new FrontPageQueriesDisplay();
+        //    obj.Movieid = _movieService.GetMovieById(id);
+        //    obj.Title = _movieService.GetMovieByTitle(title);
+        //    obj.Director = _movieService.GetMovieByDirector(director);
+        //    obj.ryear = _movieService.GetMovieByReleaseYear(ryear);
 
-            return View(obj);
-        }
+        //    return View(obj);
+        //}
 
     }
 }
