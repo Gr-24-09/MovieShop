@@ -1,8 +1,8 @@
-﻿@model MovieShop.Models.DataBase.Movie
+﻿@model MovieShop.Models.FrontPageQueriesDisplay
 
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Find";
 }
 
 <div class="col-md-8 bg-warning">
@@ -12,16 +12,20 @@
         </h3>
     </div>
     <div>
-            <em>  Directed By: @Model.Director</em>
+        <em>  Directed By: @Model.Director</em>
     </div>
     <div>
-            <i>   Released in: @Model.ReleaseYear</i>
+        <i>   Released in: @Model.ryear</i>
     </div>
     <div class="offset-md-9">
-        <strong>Price: @Model.Price kr</strong>
+        <strong>Price: @Model.Price  kr</strong>
         <hr />
     </div>
 </div>
+
+
+
+
 <div>
     <a asp-controller="Home" asp-action="Index">Back to Home Page</a>
 </div>
