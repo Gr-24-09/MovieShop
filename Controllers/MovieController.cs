@@ -52,11 +52,13 @@ namespace MovieShop.Controllers
             return View();
         }
 
+
         public IActionResult Delete(int id)
         {
             var data = _db.Movies.FirstOrDefault(x => x.Id == id);
             _db.Movies.Remove(data);
             _db.SaveChanges();
+
             return RedirectToAction("MovieRemoved");
         }
         

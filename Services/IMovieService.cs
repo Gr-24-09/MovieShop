@@ -17,5 +17,6 @@ namespace MovieShop.Services
         public void Create(Movie movie);
         public void Copy(int id);
        
+
     }
 }

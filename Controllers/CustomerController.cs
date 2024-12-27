@@ -18,7 +18,7 @@ namespace MovieShop.Controllers
             return View(CustomerList);
         }
 
-        [HttpPost]
+       
         public IActionResult DeleteCustomer(int id)
         {
             var customer = _customerService.Delete (id);
