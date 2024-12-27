@@ -5,31 +5,43 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="row">
-    
-    <div class="bg-warning">
-        <partial name="_movieListPartial" model="@Model.Top5Latest">New Releases</partial>
+<div class="bg-success float-end">
+  <form asp-Controller="Movie" asp-action="Find">
+    <label for="movie">⌕</label>
+    <input type="text" id="movie" name="movie" placeholder="Search Here..">
+    <input type="submit" value="Search">
+</form>
+</div>
+<br />
+<br />
+<div class="row bg-warning">
+    <h2 class ="float-md-start">New Releases</h2>
+    <div>
+        <partial name="_movieListPartial" model="@Model.Top5Latest"></partial>
     </div>
 </div>
 <hr />
 <br />
-<div>
-    <div class="bg-info">
-        <partial name="_movieListPartial" model="Model.Top5Oldest">Classical Movies</partial>
+<div class="row bg-info">
+    <h2 class="float-md-start">Old Classics</h2>
+    <div>
+        <partial name="_movieListPartial" model="Model.Top5Oldest"></partial>
     </div>
 </div>
 <hr />
 <br />
-<div>
-    <div class="bg-success">
-        <partial name="_movieListPartial" model="@Model.Top5Cheapest">Low-Priced Movies</partial>
+<div class="row bg-success">
+    <h2 class="float-md-start">Low-Priced Movies</h2>
+    <div>
+        <partial name="_movieListPartial" model="@Model.Top5Cheapest"></partial>
     </div>
 </div>
 <br />
 <hr />
-<div>
-    <div class="bg-primary">
-        <partial name="_movieListPartial" model="@Model.AllMovies">All Movies</partial>
+<div class="row bg-primary">
+    <h2 class="float-md-start">All Movies</h2>
+    <div>
+        <partial name="_movieListPartial" model="@Model.AllMovies"></partial>
     </div>
 </div>
 <hr />
