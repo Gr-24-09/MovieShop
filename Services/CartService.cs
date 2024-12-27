@@ -1,33 +1,21 @@
-﻿using MovieShop.Models.DataBase;
+﻿using MovieShop.Middleware;
+using MovieShop.Models.DataBase;
+using MovieShop.Models.ViewModels;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace MovieShop.Services
 {
     public class CartService : ICartService
     {
-
-        public void AddToCart(ISession session, Movie item)
+        public CartViewModel GetCartMovies(List<Movie> listMovies)
         {
-            throw new NotImplementedException();
-        }
-
-        public void ClearCart(ISession session)
-        {
-            throw new NotImplementedException();
-        }
-
-        public decimal GetTotalPrice(ISession session)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void RemoveFromCart(ISession session, int movieId)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<Movie> ICartService.GetCartMovies(ISession session)
-        {
-            throw new NotImplementedException();
+            var cart = new CartViewModel
+            {
+                ListMovies = listMovies,
+                TotalPrice = listMovies.Select(movie => movie.Price).Sum(),
+            };
+            return cart;
         }
     }
 }
