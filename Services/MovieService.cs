@@ -24,6 +24,7 @@ namespace MovieShop.Services
         }
         public List<Movie> TopCustomerWhoMadeExpensiveOrder()
         {
+            //var result = _db.OrderRows.OrderBy (f => f.Price).Take(1);
 
             return new List<Movie>();
 
