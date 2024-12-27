@@ -56,13 +56,13 @@ namespace MovieShop.Services
         }
         public Movie GetMovieById(int id)
         {
-            var movie = _db.Movies.FirstOrDefault(x => x.Id == id);
-            return movie;
+            var movieS = _db.Movies.FirstOrDefault(x => x.Id == id);
+            return movieS;
         }
         public Movie GetMovieByTitle(string title)
         {
-            var movie = _db.Movies.FirstOrDefault(x => x.Title == title);
-            return movie;
+            var movies = _db.Movies.FirstOrDefault(x => x.Title == title);
+            return movies;
         }
         public Movie GetMovieByDirector(string director)
         {
@@ -71,8 +71,8 @@ namespace MovieShop.Services
         }
         public Movie GetMovieByReleaseYear(int releaseyear)
         {
-            var movie = _db.Movies.FirstOrDefault(x => x.ReleaseYear == releaseyear);
-            return movie;
+            var movie1 = _db.Movies.FirstOrDefault(x => x.ReleaseYear == releaseyear);
+            return movie1;
         }
 
         public void Copy(int id)
