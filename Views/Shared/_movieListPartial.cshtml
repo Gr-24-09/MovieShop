@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<MovieShop.Models.DataBase.Movie>
 
     
- @{
+ @* @{
     int movieCount = 0;
- }
+ } *@
     
    
 <table class="table">
@@ -26,12 +26,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-            movieCount++;
+            @* movieCount++; *@
             
         <tr>
-                <td>
-                    @movieCount
-                </td>
+                @* <td>
+                    @movieCount 
+                </td> *@
                 
             <td>
                 @Html.DisplayFor(modelItem => item.Title)

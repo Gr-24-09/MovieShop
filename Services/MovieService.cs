@@ -69,9 +69,9 @@ namespace MovieShop.Services
             var movie = _db.Movies.FirstOrDefault(x => x.Director == director);
             return movie;
         }
-        public Movie GetMovieByReleaseYear(int ryear)
+        public Movie GetMovieByReleaseYear(int releaseyear)
         {
-            var movie = _db.Movies.FirstOrDefault(x => x.ReleaseYear == ryear);
+            var movie = _db.Movies.FirstOrDefault(x => x.ReleaseYear == releaseyear);
             return movie;
         }
 
