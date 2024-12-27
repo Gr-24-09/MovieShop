@@ -70,6 +70,10 @@ namespace MovieShop.Services
             return true;
         }
 
-
+        public List<Order> GetAllOrdersByCustomer(int customerId)
+        {
+           var orders = _db.Orders.Where(o =>o.CustomerId == customerId).ToList();
+            return orders;
+        }
     }
 }
