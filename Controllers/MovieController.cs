@@ -104,7 +104,7 @@ namespace MovieShop.Controllers
             obj.Movieid = _movieService.GetMovieById(id);
             obj.Title = _movieService.GetMovieByTitle(title);
             obj.Director = _movieService.GetMovieByDirector(director);
-            obj.ryear = _movieService.GetMovieByReleaseYear(ryear);
+            obj.Ryear = _movieService.GetMovieByReleaseYear(ryear);
 
             return View(obj);
         }
