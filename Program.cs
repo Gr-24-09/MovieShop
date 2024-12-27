@@ -1,5 +1,6 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using MovieShop.Data;
+using MovieShop.Middleware;
 using MovieShop.Services;
 public class Program
 {
@@ -10,14 +11,18 @@ public class Program
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
             ?? throw new AggregateException("Default connection not found");
 
-        builder.Services.AddDbContext<MovieDbContext>(options =>options.UseSqlServer(connectionString));
-        // Add services to the container.
+        builder.Services.AddDbContext<MovieDbContext>(opt => opt.UseSqlServer(connectionString));
+       
+        // ADD SERVICES
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
+        //builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
         builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
 
-        // Sessions setup
+
+        // SESSIONS SETUP
+        builder.Services.AddDistributedMemoryCache();
         builder.Services.AddSession(options =>
         {
             options.IdleTimeout = TimeSpan.FromMinutes(30);
@@ -27,6 +32,7 @@ public class Program
 
 
         var app = builder.Build();
+
         // Configure the HTTP request pipeline.
         if (!app.Environment.IsDevelopment())
         {
@@ -38,7 +44,10 @@ public class Program
         app.UseHttpsRedirection();
         app.UseStaticFiles();
         app.UseSession();
+        app.UseMiddleware<SessionInitializationMiddleware>();       // Initialize Sessions in Middleware folder
+        app.MapControllers();
         app.UseCookiePolicy();
+
         app.UseRouting();
         app.UseAuthorization();
 
@@ -46,6 +55,17 @@ public class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+        //// Part of TMDBService - when WebShop is loaded, update poster path in database (image for movie)
+        //app.Lifetime.ApplicationStarted.Register(async () =>
+        //{
+        //    using var scope = app.Services.CreateScope();
+        //    var tmdbService = scope.ServiceProvider.GetRequiredService<TMDBService>();
+        //    await tmdbService.UpdatePosterPathsAsync();
+        //    Console.WriteLine("Download success.");
+        //});
+
         app.Run();
     }
+
 }
