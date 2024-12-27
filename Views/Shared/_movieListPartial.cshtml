@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<MovieShop.Models.DataBase.Movie>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    
+ @* @{
+    int movieCount = 0;
+ } *@
+    
+   
 <table class="table">
     <thead>
         <tr>
@@ -23,7 +26,13 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
+            @* movieCount++; *@
+            
         <tr>
+                @* <td>
+                    @movieCount 
+                </td> *@
+                
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -36,6 +45,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+                <td>
+                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-controller="Movie" asp-action="CopyAMovie" asp-route-id="@item.Id">Copy</a>
+                </td>
             
         </tr>
 }

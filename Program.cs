@@ -18,6 +18,8 @@ public class Program
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
         //builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
+        builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
+
 
         // SESSIONS SETUP
         builder.Services.AddDistributedMemoryCache();
@@ -27,7 +29,7 @@ public class Program
             options.Cookie.HttpOnly = true;
             options.Cookie.IsEssential = true;
         });
-        
+
 
         var app = builder.Build();
 

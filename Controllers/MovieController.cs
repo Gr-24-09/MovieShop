@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MovieShop.Data;
 using MovieShop.Models;
@@ -46,7 +47,67 @@ namespace MovieShop.Controllers
         {
             return View();
         }
-       
+        public IActionResult MovieRemoved()
+        {
+            return View();
+        }
+
+
+        public IActionResult Delete(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
+            _db.Movies.Remove(data);
+            _db.SaveChanges();
+
+            return RedirectToAction("MovieRemoved");
+        }
         
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
+            return View(data);
+            
+        }
+        [HttpPost]
+        public IActionResult Edit(Movie movie)
+        {
+            var data = _db.Movies.FirstOrDefault(x => x.Id == movie.Id);
+            if (data != null)
+            {
+                data.Title = movie.Title;
+                data.Director = movie.Director;
+                data.ReleaseYear = movie.ReleaseYear;
+                data.Price = movie.Price;
+                _db.SaveChanges();
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult CopyAMovie(int id)
+        {
+            _movieService.Copy(id);
+            return RedirectToAction("MovieSuccess");
+        }
+
+        public IActionResult Details(int id)
+        {
+            // get the movie by id
+            // return movie to the view
+            var movie = _movieService.GetMovieById(id);
+            return View(movie);
+        }
+
+        public IActionResult Find(int id,string title,string director,int ryear)
+        {
+
+            FrontPageQueriesDisplay obj = new FrontPageQueriesDisplay();
+            obj.Movieid = _movieService.GetMovieById(id);
+            obj.Title = _movieService.GetMovieByTitle(title);
+            obj.Director = _movieService.GetMovieByDirector(director);
+            obj.ryear = _movieService.GetMovieByReleaseYear(ryear);
+
+            return View(obj);
+        }
+
     }
 }

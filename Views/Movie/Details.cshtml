@@ -1,0 +1,28 @@
+﻿@model MovieShop.Models.DataBase.Movie
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="col-md-8 bg-warning">
+    <div>
+        <h3>
+            @Model.Title
+        </h3>
+    </div>
+    <div>
+            <em>  Directed By: @Model.Director</em>
+    </div>
+    <div>
+            <i>   Released in: @Model.ReleaseYear</i>
+    </div>
+    <div class="offset-md-9">
+        <strong>Price: @Model.Price kr</strong>
+        <hr />
+    </div>
+</div>
+<div>
+    <a asp-controller="Home" asp-action="Index">Back to Home Page</a>
+</div>
+
