@@ -17,7 +17,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
-        //builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
+        builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
         builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
 
 
@@ -55,7 +55,6 @@ public class Program
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
         ////Part of TMDBService - when WebShop is loaded, update poster path in database(image for movie)
         //    app.Lifetime.ApplicationStarted.Register(async () =>
         //    {
@@ -64,6 +63,14 @@ public class Program
         //        await tmdbService.UpdatePosterPathsAsync();
         //        Console.WriteLine("Download success.");
         //    });
+        // Part of TMDBService - when WebShop is loaded, update poster path in database (image for movie)
+        app.Lifetime.ApplicationStarted.Register(async () =>
+        {
+            using var scope = app.Services.CreateScope();
+            var tmdbService = scope.ServiceProvider.GetRequiredService<TMDBService>();
+            await tmdbService.UpdatePosterPathsAsync();
+            Console.WriteLine("Download success.");
+        });
 
         app.Run();
     }

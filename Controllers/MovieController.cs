@@ -115,6 +115,7 @@ namespace MovieShop.Controllers
             var movies = movieList.ToList();
             return View(movies);
         }
+
     }
 
 }

@@ -1,8 +1,7 @@
 ﻿@model MovieShop.Models.DataBase.Customer
 
 
-<form asp-action="CreateCustomer" method="post" class="needs-validation" novalidate>
-    @Html.AntiForgeryToken()
+
     <div class="form-group mb-3">
         <label asp-for="FirstNameBillingAddress" class="control-label fw-bold"></label>
         <input asp-for="FirstNameBillingAddress" class="form-control" placeholder="Enter your first name" />
@@ -76,4 +75,4 @@
     </div>
    
 
-</form>
+

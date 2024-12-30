@@ -69,19 +69,33 @@ namespace MovieShop.Controllers
         [HttpPost]
         public IActionResult EditCustomer(Customer existingCustomer)
         {
-           bool isEdited = _customerService.Update(existingCustomer);
-            if (isEdited)
+            if (ModelState.IsValid)
             {
-                TempData["Message"] = "Updait successfull!";
-                return View(existingCustomer);
-            }
-            else
-            {
-                TempData["Error"] = "Failed to edit . It might already be deleted or does not exist.";
+                bool isEdited = _customerService.Update(existingCustomer);
+                if (isEdited)
+                {
+                    TempData["Message"] = "Updait successfull!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Error"] = "Failed to edit . It might already be deleted or does not exist.";
+                }
             }
 
             return View(existingCustomer);
-            
+
+        }
+
+        public IActionResult AllOrderByCustomer(int id)
+        {
+            var orders = _customerService.GetAllOrdersByCustomer(id);
+            if (orders == null || orders.Count == 0)
+            {
+                ViewBag.Message = "No orders found for this customer.";
+                return View(new List<Order>()); 
+            }
+            return View(orders);
         }
     }
 }

@@ -26,8 +26,12 @@
                         <td>@customer.LastNameBillingAddress</td>
                         <td>@customer.EmailAddress</td>
                         <td>
-                            <a asp-action="DeleteCustomer" asp-route-id="@customer.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</a>
-                            <a asp-action="EditCustomer" asp-route-id="@customer.Id" class="btn btn-primary btn-sm">Edit</a>
+                            <form asp-action="Delete" asp-route-id="@customer.Id" method="post" class="d-inline">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
+                            </form>
+                            <a asp-action="EditCustomer" asp-route-email="@customer.EmailAddress" class="btn btn-primary btn-sm">Edit</a>
+                            <a asp-action="AllOrderByCustomer" asp-route-id="@customer.Id" class="btn btn-light btn-sm">Orders</a>
                         </td>
                     </tr>
 
