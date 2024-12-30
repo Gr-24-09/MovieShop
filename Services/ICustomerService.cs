@@ -8,6 +8,7 @@ namespace MovieShop.Services
         bool Create(Customer customer);
         bool Update(Customer customer);
         bool Delete(int id);
+        List<Order> GetAllOrdersByCustomer(int customerId);
         List<Customer> customersList ();
     }
 }
