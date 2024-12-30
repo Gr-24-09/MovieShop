@@ -1,6 +1,9 @@
 ﻿
 using MovieShop.Models.DataBase;
 using MovieShop.Data;
+using System.IO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MovieShop.Services
 {
@@ -60,25 +63,10 @@ namespace MovieShop.Services
             var movieS = _db.Movies.FirstOrDefault(x => x.Id == id);
             return movieS;
         }
-        public Movie GetMovieByTitle(string title)
-        {
-            var movies = _db.Movies.FirstOrDefault(x => x.Title == title);
-            return movies;
-        }
-        public Movie GetMovieByDirector(string director)
-        {
-            var movie = _db.Movies.FirstOrDefault(x => x.Director == director);
-            return movie;
-        }
-        public Movie GetMovieByReleaseYear(int releaseyear)
-        {
-            var movie1 = _db.Movies.FirstOrDefault(x => x.ReleaseYear == releaseyear);
-            return movie1;
-        }
-
+       
         public void Copy(int id)
         {
-            var data = _db.Movies.FirstOrDefault(x=>x.Id==id);
+            var data = _db.Movies.FirstOrDefault(x => x.Id == id);
             var movie = new Movie()
             {
                 Title = data.Title,
@@ -89,7 +77,10 @@ namespace MovieShop.Services
             _db.Movies.Add(movie);
             _db.SaveChanges();
         }
-
-        
     }
 }
+            
+            
+            
+
+       

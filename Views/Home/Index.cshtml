@@ -5,13 +5,15 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="bg-success float-end">
-  <form asp-Controller="Movie" asp-action="Find">
-    <label for="movie">⌕</label>
-    <input type="text" id="movie" name="movie" placeholder="Enter Here..">
-    <input type="submit" value="Search">
+<div class="float-end">
+    <form asp-Controller="Movie" asp-action="SearchResult">
+        <label for="byParameter"></label>
+        <input type="text" name="byParameter" id="byParameter" />
+        <button class="btn btn-primary" type="submit">Search</button>     
 </form>
 </div>
+<br />
+<br />
 <br />
 <br />
 <div class="row bg-warning">
