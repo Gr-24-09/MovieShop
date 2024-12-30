@@ -19,10 +19,10 @@
 --('Laura', 'Wilson', 'Laura', 'Wilson', '505 Walnut St', '55667', 'San Diego', '505 Walnut St', '55667', 'San Diego', 'laura.wilson@email.com', '890-123-4567'),
 --('David', 'Moore', 'David', 'Moore', '606 Aspen St', '77889', 'Dallas', '606 Aspen St', '77889', 'Dallas', 'david.moore@email.com', '901-234-5678'),
 --('Anna', 'Taylor', 'Anna', 'Taylor', '707 Cherry St', '99001', 'San Jose', '707 Cherry St', '99001', 'San Jose', 'anna.taylor@email.com', '012-345-6789');
-insert into OrderRows(OrderId,MovieId,Price) values ((select max(Id) from Orders),
-(select Id from Movies where Title='Finding Nemo'),
-(select Price from Movies where Title='Finding Nemo'))
-insert into OrderRows(OrderId,MovieId,Price) values ((select top 1 Id from Orders),
-(select Id from Movies where Title='Tangled'),
-(select Price from Movies where Title='Tangled'))
---Truncate table OrderRows
+--insert into OrderRows(OrderId,MovieId,Price) values ((select max(Id) from Orders),
+--(select Id from Movies where Title='Finding Nemo'),
+--(select Price from Movies where Title='Finding Nemo'))
+--insert into OrderRows(OrderId,MovieId,Price) values ((select top 1 Id from Orders),
+--(select Id from Movies where Title='Tangled'),
+--(select Price from Movies where Title='Tangled'))
+Truncate table OrderRows

@@ -112,7 +112,6 @@ namespace MovieShop.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("ReleaseYear")
-                        .HasMaxLength(10)
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
