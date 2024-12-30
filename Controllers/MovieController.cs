@@ -97,17 +97,25 @@ namespace MovieShop.Controllers
             return View(movie);
         }
 
-        public IActionResult Find(int id,string title,string director,int ryear)
+        public IActionResult SearchResult(string byParameter)
         {
+            if (string.IsNullOrEmpty(byParameter))
+            {
+                return View(new List<Movie>());
+            }
+            var movieList = _db.Movies.AsQueryable();
 
-            FrontPageQueriesDisplay obj = new FrontPageQueriesDisplay();
-            obj.Movieid = _movieService.GetMovieById(id);
-            obj.Title = _movieService.GetMovieByTitle(title);
-            obj.Director = _movieService.GetMovieByDirector(director);
-            obj.Ryear = _movieService.GetMovieByReleaseYear(ryear);
-
-            return View(obj);
+            movieList = movieList.Where(m =>
+                m.Id.ToString().Contains(byParameter) ||
+                m.Title.Contains(byParameter) ||
+                m.Director.Contains(byParameter) ||
+                m.ReleaseYear.ToString().Contains(byParameter) ||
+                m.Price.ToString().Contains(byParameter)
+            );
+            var movies = movieList.ToList();
+            return View(movies);
         }
-
     }
+
 }
+
