@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MovieShop</title>
@@ -10,6 +11,7 @@
     <link rel="stylesheet" href="~/MovieShop.styles.css" asp-append-version="true" />
 </head>
 <body>
+    
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
@@ -34,12 +36,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers List</a>
                         </li>
 
-
-
                     </ul>
                 </div>
             </div>
         </nav>
+        
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -47,6 +48,21 @@
         </main>
     </div>
 
+    <div class="container">
+        <div class="pagination float-end">
+        <a href="#">&laquo;</a>
+        <a href="#" class="active">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">&raquo;</a>
+        </div>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2024 - MovieShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
