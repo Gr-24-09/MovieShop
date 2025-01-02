@@ -8,14 +8,57 @@ namespace MovieShop.Services
 {
     public class CartService : ICartService
     {
-        public CartViewModel GetCartMovies(List<Movie> listMovies)
+        public CartViewModel GetCartMovies(List<CartItem> cartItems)
         {
-            var cart = new CartViewModel
+            var cartViewModel = new CartViewModel
             {
-                ListMovies = listMovies,
-                TotalPrice = listMovies.Select(movie => movie.Price).Sum(),
+                CartItem = cartItems,
+                SubTotalPrice = cartItems.Sum(item => item.Movie.Price * item.Quantity)
             };
-            return cart;
+            return cartViewModel;
+        }
+
+        public void AddToCart(List<CartItem> cartItems, Movie movie)
+        {
+            var cartItem = cartItems.FirstOrDefault(item => item.Movie.Id == movie.Id);
+            if (cartItem != null)
+            {
+                cartItem.Quantity++;
+            }
+            else
+            {
+                cartItems.Add(new CartItem
+                {
+                    Movie = movie,
+                    Quantity = 1
+                });
+            }
+        }
+
+        public void RemoveFromCart(List<CartItem> cartItems, int movieId)
+        {
+            var cartItem = cartItems.FirstOrDefault(item => item.Movie.Id == movieId);
+            if (cartItem != null)
+            {
+                    cartItems.Remove(cartItem);
+            }
+        }
+
+
+        public void LowerQuantity(List<CartItem> cartItems, int movieId)
+        {
+            var cartItem = cartItems.FirstOrDefault(item => item.Movie.Id == movieId);
+            if (cartItem != null)
+            {
+                if (cartItem.Quantity > 1)
+                {
+                    cartItem.Quantity--;
+                }
+                else
+                {
+                    cartItems.Remove(cartItem);
+                }
+            }
         }
     }
 }
