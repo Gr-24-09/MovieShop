@@ -1,16 +1,12 @@
-﻿
+﻿@model MovieShop.Models.ViewModels.CartViewModel
 
-@{
-}
 
-@* <div class="container">
+
+<div class="container">
     <div class="row">
-
-        <div class="col-md-4 order-md-2 mb-4">
-            <partial name="_CartCheckOutListPartialView",Model ></partial>
-        </div>
-
-            <partial name="_CartCustomerDetailsPartialView"  model="item" ></partial>
-        
+        <partial name="_CartCheckOutListPartial"></partial>     <!-- PARTIAL , EACH MOVIE THAT EXIST IN THE CART SEPARATELY-->
     </div>
-</div>   *@
+</div>
+
+
+

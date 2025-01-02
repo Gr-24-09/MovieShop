@@ -1,5 +1,6 @@
 ﻿using MovieShop.Data;
 using MovieShop.Models.DataBase;
+using System.Diagnostics.Metrics;
 using System.Net.Mail;
 
 namespace MovieShop.Services
@@ -76,5 +77,9 @@ namespace MovieShop.Services
            var orders = _db.Orders.Where(o =>o.CustomerId == customerId).ToList();
             return orders;
         }
+
+       
+
+
     }
 }
