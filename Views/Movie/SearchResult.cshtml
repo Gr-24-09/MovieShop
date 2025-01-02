@@ -1,12 +1,14 @@
 ﻿@model IEnumerable<MovieShop.Models.DataBase.Movie>
 
-  
+@{
+    ViewData["Title"] = "SearchResult";
+}
+
+@if (Model.Any())
+{
 <table class="table">
     <thead>
         <tr>
-            <th>
-                <h4>Poster</h4>
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
@@ -19,15 +21,15 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PosterPath)
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
-                <img src="@item.PosterPath" alt="Movie Poster" width="100" height="150" />
-            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -40,14 +42,33 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
-                <td>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                    <a asp-controller="Movie" asp-action="CopyAMovie" asp-route-id="@item.Id">Copy</a>
-                </td>
-            
+            <td>
+                <img src="@item.PosterPath" alt="Movie Poster" width="100" height="150" />
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="AddProductToCart" asp-Controller="Cart">Buy</a>
+            </td>
         </tr>
 }
     </tbody>
 </table>
+}
+else
+{
+    <br />
+    <br />
+    <br />
+    <br />
+    <h3 class="text-primary float-lg-start">&#128517;No movies found matching your search,Try other Movie!!.</h3>
+    <br />
+    <br />
+    <br />
+    <br />
+}
+
+<br />
+<br />
+
+<div>
+    <a asp-action="Index" asp-Controller="Home">Back to Home</a>
+</div>

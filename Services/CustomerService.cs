@@ -1,5 +1,6 @@
 ﻿using MovieShop.Data;
 using MovieShop.Models.DataBase;
+using System.Diagnostics.Metrics;
 using System.Net.Mail;
 
 namespace MovieShop.Services
@@ -35,13 +36,14 @@ namespace MovieShop.Services
 
         public bool Update(Customer customer)
         {
-            var existingCustomer = _db.Customers.FirstOrDefault(c => c.EmailAddress == customer.EmailAddress);
+            var existingCustomer = _db.Customers.FirstOrDefault(c => c.Id == customer.Id);
             if (existingCustomer == null)
             {
                 _logger.LogError ( $"Customer {customer} is not Existing");
                 return false;
             }
-           
+
+            existingCustomer.EmailAddress = customer.EmailAddress;
             existingCustomer.DeliveryAddress = customer.DeliveryAddress;
             existingCustomer.DeliverCity = customer.DeliverCity;
             existingCustomer.DeliverZip = customer.DeliverZip;
@@ -75,5 +77,9 @@ namespace MovieShop.Services
            var orders = _db.Orders.Where(o =>o.CustomerId == customerId).ToList();
             return orders;
         }
+
+       
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieShop.Data;
 using MovieShop.Middleware;
+using MovieShop.Models.DataBase;
 using MovieShop.Services;
 public class Program
 {
@@ -17,7 +18,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
-        builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
+        //builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
         builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
 
 
@@ -43,18 +44,19 @@ public class Program
 
         app.UseHttpsRedirection();
         app.UseStaticFiles();
+        app.UseRouting();
         app.UseSession();
         app.UseMiddleware<SessionInitializationMiddleware>();       // Initialize Sessions in Middleware folder
         app.MapControllers();
         app.UseCookiePolicy();
-
+        app.UseAuthentication();
         app.UseRouting();
         app.UseAuthorization();
 
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
-
+ 
         ////Part of TMDBService - when WebShop is loaded, update poster path in database(image for movie)
         //    app.Lifetime.ApplicationStarted.Register(async () =>
         //    {

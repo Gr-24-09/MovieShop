@@ -63,32 +63,27 @@ namespace MovieShop.Controllers
         public IActionResult EditCustomer (string email)
         {
             var existingCustomer = _customerService.GetCustomerByEmail (email);
-            if (existingCustomer == null)
-            {
-                TempData["Error"] = "Customer not found.";
-                return RedirectToAction("Index");
-            }
             return View(existingCustomer);
         }
 
         [HttpPost]
         public IActionResult EditCustomer(Customer existingCustomer)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(existingCustomer); 
+                bool isEdited = _customerService.Update(existingCustomer);
+                if (isEdited)
+                {
+                    TempData["Message"] = "Updait successfull!";
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["Error"] = "Failed to edit . It might already be deleted or does not exist.";
+                }
             }
-            bool isEdited = _customerService.Update(existingCustomer);
-            if (isEdited)
-            {
-                TempData["Message"] = "Updait successfull!";
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                TempData["Error"] = "Failed to edit . It might already be deleted or does not exist.";
-                return View(existingCustomer);
-            }
+
+            return View(existingCustomer);
 
         }
 
