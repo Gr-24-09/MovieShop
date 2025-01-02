@@ -361,22 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/Views/Shared/_CartCheckOutListPartialView.cshtml
-/Middleware/SessionInitializationMiddleware.cs
-/Migrations
-/Migrations/20241220090619_primary.cs
-/Migrations/20241220090619_primary.Designer.cs
-/Migrations/20241230084132_2.cs
-/Migrations/20241230084132_2.Designer.cs
-/Migrations/20241230091018_delete2.cs
-/Migrations/20241230091018_delete2.Designer.cs
-/Models/ViewModels
-/Models/ViewModels/CartViewModel.cs
-/Services
-/Services/TMDBService.cs
-/Views
-/Views/Cart
-/Views/Cart/Index.cshtml
-/Views/Shared
-/Views/Shared/_CartCustomerDetailsPartialView.cshtml
-/movies.sql
+
