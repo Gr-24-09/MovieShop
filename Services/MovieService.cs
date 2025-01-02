@@ -37,7 +37,12 @@ namespace MovieShop.Services
 
             return new List<Movie>();
         }
+        public List<Movie> Top20Latest()
+        {
+            var results = _db.Movies.OrderByDescending(x => x.ReleaseYear).Take(20).ToList();
 
+            return results;
+        }
         public List<Movie> Top5Newest()
         {
             var resultNew = _db.Movies.OrderByDescending(x => x.ReleaseYear).Take(5).ToList();
