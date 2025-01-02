@@ -29,3 +29,25 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+
+.pagination {
+    display: inline-block;
+}
+
+.pagination a {
+    color: magenta;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 10px 10px;
+}
+
+ .pagination a.active {
+     background-color: #150089;
+     color: white;
+     border: 1px solid #000000;
+ }
+
