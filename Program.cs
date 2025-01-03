@@ -18,7 +18,7 @@ public class Program
         builder.Services.AddControllersWithViews();
         builder.Services.AddScoped<IMovieService, MovieService>(); // implementation of Movie Service
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
-        //builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
+        builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
         builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
 
 
