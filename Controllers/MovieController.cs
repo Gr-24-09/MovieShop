@@ -115,6 +115,18 @@ namespace MovieShop.Controllers
             var movies = movieList.ToList();
             return View(movies);
         }
+        public IActionResult TopCustomer()
+        {
+            var TopCustomer = _movieService.TopCustomerWhoMadeExpensiveOrder();
+            
+            return View(TopCustomer);
+        }
+        public IActionResult PopularMovies()
+        {
+            var TopMovies = _movieService.OnDemandMoviesBasedOnOrders();
+
+            return View(TopMovies);
+        }
 
     }
 
