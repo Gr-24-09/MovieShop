@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using MovieShop.Models.ViewModels;
 using static NuGet.Packaging.PackagingConstants;
+using MovieShop.Models;
 
 namespace MovieShop.Services
 {
@@ -28,25 +29,23 @@ namespace MovieShop.Services
             var resultAll = _db.Movies.ToList();
             return resultAll;
         }
-        public List<Movie> TopCustomerWhoMadeExpensiveOrder()
+        public List<TopCustomer> TopCustomerWhoMadeExpensiveOrder()
         {
 
-            //var topCustomer = _db.OrderRows.Join(_db.Orders, or => or.OrderId, o => o.Id,
-            //                  (or, o) => new { or, o }).Join(_db.Customers, combined => combined.o.CustomerId,
-            //                  c => c.Id, (combined, c) => new { combined.or, combined.o, c })
-            //                  .Join(_db.Movies, combined => combined.or.MovieId, m => m.Id,
-            //                  (combined, m) => new { combined.or, combined.o, combined.c, m })
-            //                  .GroupBy(combined => combined.c.Id).
-            //                  Select(g => new
-            //                  {
-            //                      CustomerId = g.Key,
-            //                      FirstName = g.FirstOrDefault().c.FirstNameBillingAddress,
-            //                      LastName = g.FirstOrDefault().c.LastNameBillingAddress,
-            //                      TotalPrice = g.Sum(g => g.or.Price)
-            //                  }).OrderByDescending(result => result.TotalPrice).Take(1).ToList();
-            //return topCustomer;
-            return new List<Movie>();
+            var topcustomer = _db.OrderRows.Join(_db.Orders, or => or.OrderId, o => o.Id,
+                              (or, o) => new { or, o }).Join(_db.Customers, combined => combined.o.CustomerId,
+                              c => c.Id, (combined, c) => new { combined.or, combined.o, c })
+                              .Join(_db.Movies, combined => combined.or.MovieId, m => m.Id,
+                              (combined, m) => new { combined.or, combined.o, combined.c, m })
+                              .GroupBy(combined => combined.c.Id).
+                              Select(g => new TopCustomer
+                              {
+                                  CustomerId = g.Key,
+                                  CustomerName = g.FirstOrDefault().c.FirstNameBillingAddress + " " +g.FirstOrDefault().c.LastNameBillingAddress,
+                                  TotalPrice = g.Sum(g => g.or.Price)
+                              }).OrderByDescending(result => result.TotalPrice).Take(1).ToList();
 
+            return topcustomer;
         }
         public List<Movie> OnDemandMoviesBasedOnOrders()
         {

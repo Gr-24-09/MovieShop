@@ -1,4 +1,5 @@
-﻿using MovieShop.Models.DataBase;
+﻿using MovieShop.Models;
+using MovieShop.Models.DataBase;
 
 namespace MovieShop.Services
 {
@@ -6,7 +7,8 @@ namespace MovieShop.Services
     {
         public List<Movie> GetAllMovies();
         public List<Movie> OnDemandMoviesBasedOnOrders();
-        public List<Movie> TopCustomerWhoMadeExpensiveOrder();
+        public List<TopCustomer> TopCustomerWhoMadeExpensiveOrder();
+        public List<Movie> Top20Latest();
         public List<Movie> Top5Oldest();
         public List<Movie> Top5Newest(); 
         public List<Movie> Top5Cheapest();

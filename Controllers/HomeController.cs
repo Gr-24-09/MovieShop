@@ -30,6 +30,9 @@ namespace MovieShop.Controllers
             obj.Top5Latest = _movieService.Top5Newest();
             obj.Top5Cheapest = _movieService.Top5Cheapest();
             obj.Top5Oldest = _movieService.Top5Oldest();
+            obj.TopCustomer = _movieService.TopCustomerWhoMadeExpensiveOrder();
+            obj.Top20Latest = _movieService.Top20Latest();
+            obj.MostPopular = _movieService.OnDemandMoviesBasedOnOrders();
             return View(obj);
         }
 
