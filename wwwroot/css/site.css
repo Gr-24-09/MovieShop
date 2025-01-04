@@ -31,30 +31,7 @@ body {
 }
 
 
-.pagination {
-    display: inline-block;
-    float: right;
-    margin-top: 50px;
-    margin-bottom: 100px;
-    margin-right: 450px;
-    margin-left: 200px;
-}
-
-    .pagination a {
-        color: magenta;
-        float:left;
-        padding: 8px 16px;
-        text-decoration: none;
-        transition: background-color .3s;
-        border: 1px solid #ddd;
-        
-    }
-
- .pagination a.active {
-     background-color: #150089;
-     color: white;
-     border: 1px solid #000000;
- }
+ 
 h3 {
     border: 2px solid black;
     outline: #4CAF50 solid 10px;
@@ -68,6 +45,34 @@ h3 {
 .tbMargin {
     margin-top: 50px;
     margin-bottom: 50px;
+    text-align:center
+}
+.searchBar {
+    width: 95%;
+    height: 50px;
+    font-size: 16px;
+    padding: 10px;
+    border-radius: 50px;
+}
+.searchBtn {
+    width: 100px;
+    height: 50px;
+    margin-left: -105px;
+    font-size: 15px;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: cornflowerblue;
 }
 
+.searchBtn:hover {
+    background-color: #ffd800; 
+}
+.tbMn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    color:aliceblue;
+    padding: 10px;
+    background-color:darkslategrey;
+}
 

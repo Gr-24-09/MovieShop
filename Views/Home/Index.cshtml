@@ -5,21 +5,25 @@
     ViewData["Title"] = "Index";
 }
 
-
-<div class="float-end">
-    <form asp-Controller="Movie" asp-action="SearchResult">
-        <label for="byParameter"></label>
-        <input type="text" name="byParameter" id="byParameter" />
-        <button class="btn btn-primary" type="submit">Search</button>     
-</form>
+<br />
+<br />
+<div>
+    <h1>Welcome.</h1>
+    <h2>Discover your favourite Movies,people here.Explore now.</h2>
 </div>
 <br />
 <br />
+<div class="row">
+    <form asp-Controller="Movie" asp-action="SearchResult">
+        <label for="byParameter"></label>
+        <input type="text" name="byParameter" id="byParameter" class="searchBar" placeholder="Search for a Movie......" />
+        <button class="searchBtn" type="submit">Search</button>
+    </form>
+</div>
 <br />
 <br />
 
-<div class="row bg-info tbMargin">
-    <h2 class="float-md-start text-light">Top Customer</h2>
+<div class="row tbMn">
     <div>
         <partial name="_topCustomerViewPartial" model="Model.TopCustomer"></partial>
     </div>
@@ -33,7 +37,7 @@
 </div>
 <hr />
 <div class="row bg-info tbMargin">
-    <h2 class="float-md-start text-light">New Releases</h2>
+    <h2 class="float-md-start text-light">Trending Movies</h2>
     <div>
         <partial name="_movieListPartial" model="Model.MostPopular"></partial>
     </div>
