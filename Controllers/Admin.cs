@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MovieShop.Data;
+using MovieShop.Models.ViewModels;
 
 namespace MovieShop.Controllers
 {
@@ -24,18 +25,18 @@ namespace MovieShop.Controllers
                 .ThenInclude(or => or.Movie)
                 .Include(o => o.Customer)
                 .OrderByDescending(o => o.OrderDate)
-                .Select(o => new
+                .Select(o => new OrderViewModel
                 {
                     OrderId = o.Id,
                     CustomerName = $"{o.Customer.FirstNameBillingAddress} {o.Customer.LastNameBillingAddress}",
                     OrderDate = o.OrderDate,
-                    TotalCost = o.OrderRows.Sum(or => or.Quantity * or.Price),
-                    Movies = o.OrderRows.Select(or => new
+                    Totalcost = o.OrderRows.Sum(or => or.Quantity * or.Price),
+                    Movies = o.OrderRows.Select(or => new MovieItemViewModel
                     {
-                        or.Movie.Title,
-                        or.Quantity,
-                        or.Price
-                    })
+                        Title = or.Movie.Title,
+                        Quantity = or.Quantity,
+                        Price = or.Price
+                    }).ToList()
                 })
                 .ToList();
 
