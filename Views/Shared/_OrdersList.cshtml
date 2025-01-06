@@ -1,4 +1,4 @@
-﻿@model List<OrderViewModel>
+﻿@model List<MovieShop.Models.ViewModels.OrderViewModel>
 
 <table class="table">
     <thead>
@@ -17,7 +17,7 @@
                 <td>@order.OrderId</td>
                 <td>@order.CustomerName</td>
                 <td>@order.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
-                <td>@order.TotalCost.ToString("C")</td>
+                <td>@order.Totalcost.ToString("C")</td>
                 <td>
                     <ul>
                         @foreach (var movie in order.Movies)

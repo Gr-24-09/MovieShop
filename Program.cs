@@ -66,13 +66,13 @@ public class Program
         //        Console.WriteLine("Download success.");
         //    });
         // Part of TMDBService - when WebShop is loaded, update poster path in database (image for movie)
-        app.Lifetime.ApplicationStarted.Register(async () =>
-        {
-            using var scope = app.Services.CreateScope();
-            var tmdbService = scope.ServiceProvider.GetRequiredService<TMDBService>();
-            await tmdbService.UpdatePosterPathsAsync();
-            Console.WriteLine("Download success.");
-        });
+        //app.Lifetime.ApplicationStarted.Register(async () =>
+        //{
+        //    using var scope = app.Services.CreateScope();
+        //    var tmdbService = scope.ServiceProvider.GetRequiredService<TMDBService>();
+        //    await tmdbService.UpdatePosterPathsAsync();
+        //    Console.WriteLine("Download success.");
+        //});
 
         app.Run();
     }

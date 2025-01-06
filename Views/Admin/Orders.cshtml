@@ -1,13 +1,12 @@
-﻿@model List<OrderViewModel>
+﻿@model List<MovieShop.Models.ViewModels.OrderViewModel>
+@{
+   ViewData["Title"] = "All Orders";
+}
 
-<h1>All Orders</h1>
-
-@Html.Partial("_OrderList", Model)
-
-<a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
-
-
-
-
-
-
+<div class="container">
+    <h2>@ViewData["Title"]</h2>
+    <partial name="_OrdersList" model="@Model" />
+    <div class="d-flex justify-content-end">
+        <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
