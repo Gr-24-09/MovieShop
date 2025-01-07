@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark" >
 <head>
     
     <meta charset="utf-8" />
@@ -13,45 +13,44 @@
 <body>
     
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-black text-bg-light border-bottom box-shadow mb-3">
+            <div class="container-fluid px-0">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-white">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Movie" asp-action="Create">Add New Movie</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Create">(+)Movie</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="CreateCustomer">Create Customer</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="CreateCustomer">(+)Customer</a>
                       
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Customers List</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Customer" asp-action="Index">Customers List</a>
                         </li>
                         
-
                     </ul>
                 </div>
             </div>
         </nav>
         
     </header>
-    <div class="container">
+    <div class="container-fluid px-0">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="container-fluid border-top footer text-muted bgimagefooter">
+        <div>
+            
             &copy; 2024 - MovieShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
