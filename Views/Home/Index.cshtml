@@ -5,22 +5,21 @@
     ViewData["Title"] = "Index";
 }
 
-
-<div class="tbMargin">
+<div class="container-fluid bgimage tbMgn px-0">
+<div class="tbMgn">
     <h1>Welcome.</h1>
-    <h2>Discover your favourite Movies ,from our good collections.Explore now.</h2>
+    <h2>Discover your favourite Movies ,from our good collection.Explore now.</h2>
 </div>
-
-<div class="row">
+<br />
+<br />
+<div class="row tbMgn">
     <form asp-Controller="Movie" asp-action="SearchResult">
         <label for="byParameter"></label>
         <input type="text" name="byParameter" id="byParameter" class="searchBar" placeholder="Search for a Movie......" />
         <button class="searchBtn" type="submit">Search</button>
     </form>
 </div>
-
-<br />
-<br />
+</div>
 
 <div class="row tbMn">
     <div>
@@ -71,4 +70,3 @@
         <partial name="_movieListPartial" model="@Model.AllMovies"></partial>
     </div>
 </div>
-<hr />

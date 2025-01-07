@@ -14,7 +14,6 @@ namespace MovieShop.Controllers
     {
         private readonly IMovieService _movieService;
         private readonly MovieDbContext _db;
-
         public MovieController(IMovieService movieService, MovieDbContext db)
         {
             _movieService = movieService;
@@ -51,7 +50,6 @@ namespace MovieShop.Controllers
         {
             return View();
         }
-
 
         public IActionResult Delete(int id)
         {
