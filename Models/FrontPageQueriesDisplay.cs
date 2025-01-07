@@ -8,6 +8,10 @@ namespace MovieShop.Models
         public List<Movie> Top5Oldest { get; set; } = new List<Movie>();
         public List<Movie> Top5Cheapest { get; set; } = new List<Movie>();
         public List<Movie> AllMovies { get; set; } = new List<Movie>();
+        public List<TopCustomer> TopCustomer { get; set; }= new List<TopCustomer>();
+        public List<Movie> MostPopular { get; set; } = new List<Movie>();
+        public List<Movie> Top20Latest { get; set; } = new List<Movie>();
+
         public Movie Movieid { get; set; }
         public Movie Title { get; set; }
         public Movie Director { get; set; }

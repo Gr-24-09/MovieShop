@@ -1,7 +1,4 @@
-﻿--select distinct Title,Director,ReleaseYear,Price into Movies_temp from Movies
---Delete  Movies
---DBCC CHECKIDENT ('[Movies]', RESEED, 0);
---insert into Movies(Title,Director,ReleaseYear,Price) select distinct Title,Director,ReleaseYear,Price from Movies_temp
+﻿
 
 
 
@@ -25,4 +22,4 @@
 --insert into OrderRows(OrderId,MovieId,Price) values ((select top 1 Id from Orders),
 --(select Id from Movies where Title='Tangled'),
 --(select Price from Movies where Title='Tangled'))
-Truncate table OrderRows
+
