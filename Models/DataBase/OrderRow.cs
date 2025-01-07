@@ -17,6 +17,9 @@ namespace MovieShop.Models.DataBase
         [Display(Name = "Movie Id")]
         public int MovieId { get; set; }
 
+        [Required]
+        [Range(1, 100, ErrorMessage = "Quantity must be between 1 and 100.")]
+        public int Quantity { get; set; }
 
         [Required(ErrorMessage = "Price of Movie is required.")]
         [DataType(DataType.Currency)]

@@ -12,8 +12,8 @@ using MovieShop.Data;
 namespace MovieShop.Migrations
 {
     [DbContext(typeof(MovieDbContext))]
-    [Migration("20241227102746_Newtest")]
-    partial class Newtest
+    [Migration("20250103124110_New")]
+    partial class New
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -164,6 +164,9 @@ namespace MovieShop.Migrations
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

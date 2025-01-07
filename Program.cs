@@ -65,7 +65,6 @@ public class Program
         //    await tmdbService.UpdatePosterPathsAsync();
         //    Console.WriteLine("Download success.");
         //});
-        
 
         app.Run();
     }
