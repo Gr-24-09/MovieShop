@@ -92,7 +92,7 @@ h3 {
 }
 .bgimagefooter {
     margin-top: 20px;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
     height: 120px;
     background-image: url('../images/theme_images/cinema3.jpg');
     background-repeat:repeat-x;
