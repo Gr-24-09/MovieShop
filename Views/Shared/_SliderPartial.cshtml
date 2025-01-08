@@ -1,0 +1,88 @@
+﻿@model MovieShop.Models.FrontPageQueriesDisplay
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+
+    <!-- Carousel Inner Content -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="row">
+                @foreach (var item in Model.Top20Latest.Take(6))
+                {
+                    <div class="col-md-2">
+                        <div class="card text-bg-dark">
+                            <img src="@item.PosterPath" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <p class="card-text text-white bg-opacity-50 bg-dark"><small>@item.ReleaseYear</small></p>
+                            </div>
+                            <a href="@Url.Action("AddProductToCart", "Cart", new { id = item.Id })" class="btn btn-warning" style="z-index: 10;"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="carousel-item">
+            <div class="row">
+                @foreach (var item in Model.Top20Latest.Skip(6).Take(6))
+                {
+                    <div class="col-md-2">
+                        <div class="card text-bg-dark">
+                            <img src="@item.PosterPath" class="card-img" alt="...">
+                            <div class="card-img-overlay">
+                                <p class="card-text text-white bg-opacity-50 bg-dark"><small>@item.ReleaseYear</small></p>
+                            </div>
+                            <a href="@Url.Action("AddProductToCart", "Cart", new { id = item.Id })" class="btn btn-warning" style="z-index: 10;"><i class="bi bi-cart-plus"></i></a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Controls placed outside and to the left/right of the carousel -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
+</div>
+
+<!-- Custom Styling for Control Buttons -->
+<style>
+    [data-bs-theme="dark"] .carousel .carousel-control-next-icon,
+    [data-bs-theme="dark"] .carousel .carousel-control-prev-icon,
+    .carousel .carousel-control-next-icon,
+    .carousel .carousel-control-prev-icon {
+        filter: none !important; 
+    }
+
+    .carousel-control-prev, .carousel-control-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+    .carousel-control-prev {
+        left: -130px; /* Adjust this value to move the "Prev" button to the left */
+    }
+
+    .carousel-control-next {
+        right: -130px; /* Adjust this value to move the "Next" button to the right */
+    }
+
+    .carousel-inner {
+        position: relative;
+    }
+</style>
