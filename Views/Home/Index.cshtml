@@ -28,14 +28,13 @@
     </div>
 </div>
 <hr />
-<div class="row bg-danger tbMargin">
-    <h2 class="float-md-start text-light">Movies to display like carousal</h2>
+<div class="row tbMargin">
     <div>
-        <partial name="_movieListPartial" model="Model.Top20Latest"></partial>
+        <partial name="_SliderPartial"></partial>
     </div>
 </div>
 <hr />
-<div class="row bg-info tbMargin">
+<div class="row tbMargin">
     <h2 class="float-md-start text-light">Trending Movies</h2>
     <div>
         <partial name="_movieListPartial" model="Model.MostPopular"></partial>
@@ -43,7 +42,7 @@
 </div>
 <hr />
 
-<div class="row bg-warning tbMargin">
+<div class="row tbMargin">
     <h2 class="float-md-start text-light">New Releases</h2>
     <div>
         <partial name="_movieListPartial" model="Model.Top5Latest"></partial>
@@ -51,21 +50,21 @@
 </div>
 <hr />
 
-<div class="row bg-info tbMargin">
+<div class="row tbMargin">
     <h2 class="float-md-start text-light">Old Classics</h2>
     <div>
         <partial name="_movieListPartial" model="Model.Top5Oldest"></partial>
     </div>
 </div>
 <hr />
-<div class="row bg-success tbMargin">
+<div class="row tbMargin">
     <h2 class="float-md-start text-light">Low-Priced Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.Top5Cheapest"></partial>
     </div>
 </div>
 <hr />
-<div class="row bg-primary tbMargin">
+<div class="row tbMargin">
     <h2 class="float-md-start text-light">All Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.AllMovies"></partial>

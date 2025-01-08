@@ -12,10 +12,20 @@ namespace MovieShop.Models.ViewModels
         public decimal TotalPrice => SubTotalPrice + ShippingCost; // Combined
         public Customer Customer { get; set; } = new Customer();
         public Movie MostPopularMovie { get; set; } = new Movie();
+        public int OrderId { get; set; }
+        public string Email { get; set; }
     }
     public class CartItem
     {
         public Movie Movie { get; set; }
         public int Quantity { get; set; }
+    }
+    public class OrderSummaryViewModel
+    {
+        public int OrderId { get; set; }
+        public DateTime OrderDate { get; set; }
+        public Customer Customer { get; set; }
+        public List<OrderRow> OrderRows { get; set; } = new List<OrderRow>();
+        public decimal TotalPrice { get; set; }
     }
 }
