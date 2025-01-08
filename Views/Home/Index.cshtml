@@ -6,10 +6,13 @@
 }
 
 <div class="container-fluid bgimage tbMgn px-0">
+    <div class="row"></div>
 <div class="tbMgn">
+    
     <h1>Welcome.</h1>
     <h2>Discover your favourite Movies ,from our good collection.Explore now.</h2>
 </div>
+<br />
 <br />
 <br />
 <div class="row tbMgn">
@@ -19,21 +22,16 @@
         <button class="searchBtn" type="submit">Search</button>
     </form>
 </div>
+    <div class="row"></div>
 </div>
 
-<div class="row tbMn">
-    <div>
-        <partial name="_topCustomerViewPartial" model="Model.TopCustomer"></partial>
-    </div>
-</div>
-<hr />
 <div class="row bg-danger tbMargin">
     <h2 class="float-md-start text-light">Movies to display like carousal</h2>
     <div>
         <partial name="_movieListPartial" model="Model.Top20Latest"></partial>
     </div>
 </div>
-<hr />
+
 <div class="row bg-info tbMargin">
     <h2 class="float-md-start text-light">Trending Movies</h2>
     <div>
@@ -48,7 +46,6 @@
         <partial name="_movieListPartial" model="Model.Top5Latest"></partial>
     </div>
 </div>
-<hr />
 
 <div class="row bg-info tbMargin">
     <h2 class="float-md-start text-light">Old Classics</h2>
@@ -56,17 +53,24 @@
         <partial name="_movieListPartial" model="Model.Top5Oldest"></partial>
     </div>
 </div>
-<hr />
+
 <div class="row bg-success tbMargin">
     <h2 class="float-md-start text-light">Low-Priced Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.Top5Cheapest"></partial>
     </div>
 </div>
-<hr />
+
 <div class="row bg-primary tbMargin">
     <h2 class="float-md-start text-light">All Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.AllMovies"></partial>
     </div>
+</div>
+<div class="row tbMn">
+    <div>
+        <partial name="_topCustomerViewPartial" model="Model.TopCustomer"></partial>
+    </div>
+    <br />
+    <br />
 </div>

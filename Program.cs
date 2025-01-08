@@ -43,7 +43,7 @@ public class Program
         builder.Services.AddScoped<ICartService, CartService>(); // implementation of Cart Service
         builder.Services.AddScoped<TMDBService>(); // Service that updates posters path in database
         builder.Services.AddScoped<ICustomerService, CustomerService>(); // implementation of Customer Service
-        builder.Services.AddScoped<ApplicationInitializer>();
+        //builder.Services.AddScoped<ApplicationInitializer>();
         builder.Services.AddScoped<IEmailSender, MockEmailSender>();
 
 
@@ -66,12 +66,12 @@ public class Program
             // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
             app.UseHsts();
         }
-        // Seed roles and admin user
-        using (var scope = app.Services.CreateScope())
-        {
-            var initializer = scope.ServiceProvider.GetRequiredService<ApplicationInitializer>();
-            await initializer.SeedRolesAndUsersAsync(); // Correct placement
-        }
+        //// Seed roles and admin user
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var initializer = scope.ServiceProvider.GetRequiredService<ApplicationInitializer>();
+        //    await initializer.SeedRolesAndUsersAsync(); // Correct placement
+        //}
         
 
         app.UseHttpsRedirection();
