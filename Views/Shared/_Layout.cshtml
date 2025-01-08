@@ -14,6 +14,8 @@
 <body>
     <header>
 
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm bgimagenav border-bottom box-shadow">
+            <div class="container-fluid px-0">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -27,8 +29,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Create">(+)Movie</a>
                         </li>
-
-
+                
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
