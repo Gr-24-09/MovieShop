@@ -362,3 +362,8 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+/wwwroot
+/Views/Movie/Find.cshtml
+/Views/Movie/SearchResult.cshtml
+/Migrations/20250108122130_new9.Designer.cs
+/Migrations/20250108122130_new9.cs
