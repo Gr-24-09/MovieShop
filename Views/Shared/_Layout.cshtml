@@ -1,5 +1,7 @@
 ﻿<!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+
+<html lang="en" data-bs-theme="dark" >
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,55 +13,72 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
+
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between text-white">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                ADMIN
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="adminDropdown">
-                                <li><a class="dropdown-item" asp-controller="Admin" asp-action="Orders">Orders</a></li>
-                                <li><a class="dropdown-item" asp-controller="Customer" asp-action="Index">Customers List</a></li>
-                                <li><a class="dropdown-item" asp-controller="Movie" asp-action="Create">Add New Movie</a></li>
-                                <li><a class="dropdown-item" asp-controller="Customer" asp-action="CreateCustomer">Create Customer</a></li>
-                            </ul>
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Create">(+)Movie</a>
                         </li>
+
+
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    ADMIN
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                                    <li><a class="dropdown-item" asp-controller="Admin" asp-action="Orders">Orders</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Customer" asp-action="Index">Customers List</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Movie" asp-action="Create">Add New Movie</a></li>
+                                    <li><a class="dropdown-item" asp-controller="Customer" asp-action="CreateCustomer">Create Customer</a></li>
+                                </ul>
+                            </li>
+                        }
+                       
                     </ul>
                     <ul class="navbar-nav ms-auto">
+                    @if (User.Identity?.IsAuthenticated ?? false)
+                    {
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Index">
-                                <i class="bi bi-cart-fill"></i>
-                                <span class="badge bg-danger" id="cartItemCount">@ViewData["CartItemCount"]</span>
-                            </a>
+                            <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="form-inline">
+                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                            </form>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item text-light float-start">
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a type="button" class="btn btn-primary">Sign Up</a>
+                            <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
                         </li>
+                    }
+
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
 
-    <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 - MovieShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <footer class="container-fluid border-top footer text-muted bgimagefooter">
+        <div class="row bgimageonimage">
+            <div >
+                &copy; 2024 - MovieShop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
         </div>
     </footer>
 
