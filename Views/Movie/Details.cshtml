@@ -5,11 +5,12 @@
     ViewData["Title"] = "Details";
 }
 
-<div class="col-md-8 bg-black text-light">
+<div class="col-md-10 bg-primary-subtle text-light">
     <div>
         <h2>
             @Model.Title
         </h2>
+        <div class="float-end"><img src="@Model.PosterPath" alt="Movie Poster" width="400" height="350" /></div>
     </div>
     <div>
             <em> Directed By: @Model.Director</em>
