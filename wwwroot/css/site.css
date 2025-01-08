@@ -77,12 +77,12 @@ h3 {
     background-color:hotpink; 
 }
 .tbMn {
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 0px;
     text-align: center;
-    color:aliceblue;
-    padding:0px;
-    background-color:darkslateblue;
+    color: aliceblue;
+    padding: 0px;
+    background-color: #29061d;
 }
 .bgimage {
     background: url('../images/theme_images/cinema7.jpg');
@@ -93,10 +93,22 @@ h3 {
 .bgimagefooter {
     margin-top: 0px;
     margin-bottom: 0px;
-    height:70px;
+    height: 75px;
     background-image: url('../images/theme_images/cinema3.jpg');
     background-position: top center;
     background-repeat: no-repeat;
     background-size: 100% auto;
-    text-align: center;
+    
+}
+.bgimageonimage {
+    height: 75px;
+    width: 160px;
+    background-image: url('../images/theme_images/popcorn21.jpg');
+    background-position: top center;
+    background-repeat: repeat;
+    background-size: 100% auto;
+}
+.bgimagenav {
+    background-color:#29061d;
+    color:aliceblue;
 }
