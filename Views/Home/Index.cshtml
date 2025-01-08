@@ -5,36 +5,34 @@
     ViewData["Title"] = "Index";
 }
 
-
-<div class="tbMargin">
+<div class="container-fluid bgimage tbMgn px-0">
+    <div class="row"></div>
+<div class="tbMgn">
+    
     <h1>Welcome.</h1>
-    <h2>Discover your favourite Movies ,from our good collections.Explore now.</h2>
+    <h2>Discover your favourite Movies ,from our good collection.Explore now.</h2>
 </div>
-
-<div class="row">
+<br />
+<br />
+<br />
+<div class="row tbMgn">
     <form asp-Controller="Movie" asp-action="SearchResult">
         <label for="byParameter"></label>
         <input type="text" name="byParameter" id="byParameter" class="searchBar" placeholder="Search for a Movie......" />
         <button class="searchBtn" type="submit">Search</button>
     </form>
 </div>
+    <div class="row"></div>
+</div>
 
-<br />
-<br />
-
-<div class="row tbMn">
+<div class="row bg-danger tbMargin">
+    <h2 class="float-md-start text-light">Movies to display like carousal</h2>
     <div>
-        <partial name="_topCustomerViewPartial" model="Model.TopCustomer"></partial>
+        <partial name="_movieListPartial" model="Model.Top20Latest"></partial>
     </div>
 </div>
-<hr />
-<div class="row tbMargin">
-    <div>
-        <partial name="_SliderPartial"></partial>
-    </div>
-</div>
-<hr />
-<div class="row tbMargin">
+
+<div class="row bg-info tbMargin">
     <h2 class="float-md-start text-light">Trending Movies</h2>
     <div>
         <partial name="_movieListPartial" model="Model.MostPopular"></partial>
@@ -42,32 +40,37 @@
 </div>
 <hr />
 
-<div class="row tbMargin">
+<div class="row bg-warning tbMargin">
     <h2 class="float-md-start text-light">New Releases</h2>
     <div>
         <partial name="_movieListPartial" model="Model.Top5Latest"></partial>
     </div>
 </div>
-<hr />
 
-<div class="row tbMargin">
+<div class="row bg-info tbMargin">
     <h2 class="float-md-start text-light">Old Classics</h2>
     <div>
         <partial name="_movieListPartial" model="Model.Top5Oldest"></partial>
     </div>
 </div>
-<hr />
-<div class="row tbMargin">
+
+<div class="row bg-success tbMargin">
     <h2 class="float-md-start text-light">Low-Priced Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.Top5Cheapest"></partial>
     </div>
 </div>
-<hr />
-<div class="row tbMargin">
+
+<div class="row bg-primary tbMargin">
     <h2 class="float-md-start text-light">All Movies</h2>
     <div>
         <partial name="_movieListPartial" model="@Model.AllMovies"></partial>
     </div>
 </div>
-<hr />
+<div class="row tbMn">
+    <div>
+        <partial name="_topCustomerViewPartial" model="Model.TopCustomer"></partial>
+    </div>
+    <br />
+    <br />
+</div>
