@@ -1,4 +1,4 @@
-﻿﻿@model IEnumerable<MovieShop.Models.DataBase.Movie>
+﻿@model IEnumerable<MovieShop.Models.DataBase.Movie>
 
 @{
     ViewData["Title"] = "SearchResult";
@@ -6,7 +6,7 @@
 
 @if (Model.Any())
 {
-    <table class="table">
+<table class="table">
     <thead>
         <tr>
             <th>
@@ -34,7 +34,7 @@
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Director)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ReleaseYear)
@@ -46,7 +46,7 @@
                 <img src="@item.PosterPath" alt="Movie Poster" width="100" height="150" />
             </td>
             <td>
-                <a class="btn btn-primary" asp-Controller="Cart" asp-action="AddProductToCart" asp-route-id="@item.Id">Add To Cart</a>
+            <a class="btn btn-primary" asp-Controller="Cart"  asp-action="AddProductToCart" asp-route-id="@item.Id">Add To Cart</a>
             </td>
         </tr>
 }

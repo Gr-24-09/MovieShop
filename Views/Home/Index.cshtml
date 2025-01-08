@@ -1,5 +1,4 @@
-﻿﻿@model MovieShop.Models.FrontPageQueriesDisplay
-
+﻿@model MovieShop.Models.FrontPageQueriesDisplay
 
 @{
     ViewData["Title"] = "Index";
@@ -25,10 +24,9 @@
     <div class="row"></div>
 </div>
 
-<div class="row bg-danger tbMargin">
-    <h2 class="float-md-start text-light">Movies to display like carousal</h2>
+<div class="row tbMargin">
     <div>
-        <partial name="_movieListPartial" model="Model.Top20Latest"></partial>
+        <partial name="_SliderPartial"></partial>
     </div>
 </div>
 
