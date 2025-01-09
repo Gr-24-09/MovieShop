@@ -29,7 +29,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Create">(+)Movie</a>
                         </li>
-                
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
@@ -66,15 +65,29 @@
                     }
 
                     </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Cart" asp-action="Index">
+                        <i class="bi bi-cart-fill"></i>
+                        <span class="badge bg-danger" id="cartItemCount">@ViewData["CartItemCount"]</span>
+                    </a>
+                </li>
+
+            </ul>
                 </div>
             </div>
         </nav>
     </header>
-
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="layout_message" class="container-fluid text-center alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
-    </div>
+    
     <footer class="container-fluid border-top footer text-muted bgimagefooter">
         <div class="row bgimageonimage">
             <div >

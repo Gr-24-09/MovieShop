@@ -49,6 +49,7 @@ namespace MovieShop.Controllers
                 var cartItems = HttpContext.Session.GetObject<List<CartItem>>("CartItems");
                 _cartService.AddToCart(cartItems, movie);
                 HttpContext.Session.SetObject<List<CartItem>>("CartItems", cartItems);
+                TempData["SuccessMessage"] = "Item added to cart successfuly";
             }
 
             // (In case of using outside of Cart Index View)
