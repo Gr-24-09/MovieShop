@@ -1,4 +1,5 @@
-﻿using MovieShop.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using MovieShop.Data;
 using MovieShop.Models.DataBase;
 using System.Diagnostics.Metrics;
 using System.Net.Mail;
@@ -17,7 +18,8 @@ namespace MovieShop.Services
 
         public List<Customer> customersList()
         {
-            return _db.Customers.ToList();
+            var customer = _db.Customers.Include(c => c.Orders).ToList();
+            return customer;
         }
 
         
