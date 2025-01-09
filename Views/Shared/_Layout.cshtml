@@ -78,7 +78,12 @@
             </div>
         </nav>
     </header>
-
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div id="layout_message" class="container-fluid text-center alert alert-success">
+            @TempData["SuccessMessage"]
+        </div>
+    }
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
