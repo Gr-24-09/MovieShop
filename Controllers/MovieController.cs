@@ -79,7 +79,7 @@ namespace MovieShop.Controllers
                 data.Price = movie.Price;
                 _db.SaveChanges();
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","Home");
         }
         public IActionResult CopyAMovie(int id)
         {
