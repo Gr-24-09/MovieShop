@@ -1,30 +1,52 @@
-﻿@model List<MovieShop.Models.DataBase.Order>
+﻿@model List<MovieShop.Models.ViewModels.OrderViewModel>
 
-<h2>Orders for Customer</h2>
-
-@if (Model.Count == 0)
-{
-    <p>@ViewBag.Message</p>
+@{
+    ViewData["Title"] = "Customer Orders";
 }
-else
-{
-    <table class="table mt-4">
-        <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Order Date</th>
-                <th>Total Price</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var order in Model)
-            {
+
+<div class="container mt-4">
+    <h2 class="mb-4">Orders</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <table class="table table-striped table-bordered">
+            <thead>
                 <tr>
-                    <td>@order.Id</td>
-                    <td>@order.OrderDate.ToShortDateString()</td>
-                    @* <td>@order.TotalPrice.ToString("C")</td> *@
+                    <th>Order ID</th>
+                    <th>Order Date</th>
+                    <th>Total Cost</th>
+                    <th>Movies</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+                    <tr>
+                        <td>@order.OrderId</td>
+                        <td>@order.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
+                        <td>@order.Totalcost.ToString("C")</td>
+                        <td>
+                            <ul>
+                                @foreach (var movie in order.Movies)
+                                {
+                                    <li>
+                                        <img src="@movie.PosterPath" alt="@movie.Title" style="width: 50px; height: 75px;" />
+                                        <strong>@movie.Title</strong> -
+                                        Quantity: @movie.Quantity,
+                                        Price: @movie.Price.ToString("C")
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="alert alert-warning text-center">
+            No orders available for this customer.
+        </div>
+    }
+</div>

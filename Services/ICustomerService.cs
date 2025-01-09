@@ -1,4 +1,5 @@
 ﻿using MovieShop.Models.DataBase;
+using MovieShop.Models.ViewModels;
 
 namespace MovieShop.Services
 {
@@ -8,7 +9,7 @@ namespace MovieShop.Services
         bool Create(Customer customer);
         bool Update(Customer customer);
         bool Delete(int id);
-        List<Order> GetAllOrdersByCustomer(int customerId);
+        List<OrderViewModel> GetAllOrdersByCustomer(int customerId);
         List<Customer> customersList ();
     }
 }
