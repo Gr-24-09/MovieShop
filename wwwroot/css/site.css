@@ -114,3 +114,22 @@ h3 {
     background-color:#29061d;
     color:aliceblue;
 }
+
+#layout_message {
+    position: absolute;
+    top: 0px;
+    z-index: 1000;
+    transform: translateX(0); /* Initial state */
+    transition: transform 2s ease-in-out;
+    animation: fade-out 2s forwards; /* Apply fade-out animation */
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1; /* Fully visible */
+    }
+
+    100% {
+        opacity: 0; /* Fully invisible */
+    }
+}
