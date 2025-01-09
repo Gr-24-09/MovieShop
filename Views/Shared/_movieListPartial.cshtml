@@ -41,12 +41,14 @@
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
                 <td>
-                    <a asp-controller="Movie" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-controller="Movie" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
-                    <a asp-controller="Movie" asp-action="CopyAMovie" asp-route-id="@item.Id">Copy</a>
+                    <a class="btn btn-secondary" asp-controller="Movie" asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a class="btn btn-success" asp-controller="Movie" asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a class="btn btn-danger" asp-controller="Movie" asp-action="Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a class="btn btn-warning" asp-controller="Movie" asp-action="CopyAMovie" asp-route-id="@item.Id">Copy</a>
+                    <br />
+                    <br />
+                    <a class="btn btn-primary" asp-Controller="Cart" asp-action="AddProductToCart" asp-route-id="@item.Id">Add To Cart</a>
                 </td>
-            
         </tr>
 }
     </tbody>
