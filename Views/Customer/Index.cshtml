@@ -26,7 +26,7 @@
                         <td>@customer.LastNameBillingAddress</td>
                         <td>@customer.EmailAddress</td>
                         <td>
-                            <form asp-action="Delete" asp-route-id="@customer.Id" method="post" class="d-inline">
+                                    <form asp-action="DeleteCustomer" asp-route-id="@customer.Id" method="post" class="d-inline">
                                 @Html.AntiForgeryToken()
                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this customer?');">Delete</button>
                             </form>

@@ -26,8 +26,8 @@ namespace MovieShop.Services
         }
         public List<Movie> GetAllMovies()
         {
-            var resultAll = _db.Movies.ToList();
-            return resultAll;
+            return _db.Movies.ToList();
+           
         }
         public List<TopCustomer> TopCustomerWhoMadeExpensiveOrder()
         {
@@ -97,6 +97,8 @@ namespace MovieShop.Services
             _db.Movies.Add(movie);
             _db.SaveChanges();
         }
+
+       
     }
 }
             

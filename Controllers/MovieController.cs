@@ -21,7 +21,8 @@ namespace MovieShop.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            var movies = _movieService.GetAllMovies();
+            return View(movies);
         }
 
         [HttpGet]

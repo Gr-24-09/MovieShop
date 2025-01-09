@@ -26,7 +26,6 @@ namespace MovieShop.Controllers
             ViewData["CartItemCount"] = cartItems.Select(m => m.Quantity).Sum();
 
             FrontPageQueriesDisplay obj = new FrontPageQueriesDisplay();
-            obj.AllMovies = _movieService.GetAllMovies();
             obj.Top5Latest = _movieService.Top5Newest();
             obj.Top5Cheapest = _movieService.Top5Cheapest();
             obj.Top5Oldest = _movieService.Top5Oldest();

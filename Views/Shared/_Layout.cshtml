@@ -26,9 +26,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Create">(+)Movie</a>
+                            <a class="nav-link text-light" asp-area="" asp-controller="Movie" asp-action="Index">Movies</a>
                         </li>
+                        
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item dropdown">
@@ -50,7 +52,7 @@
                     {
                         <li class="nav-item">
                             <form asp-area="Identity" asp-page="/Account/Logout" method="post" class="form-inline">
-                                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+                                <button type="submit" class="nav-link ">Logout</button>
                             </form>
                         </li>
                     }
