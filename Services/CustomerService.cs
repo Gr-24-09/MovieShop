@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieShop.Data;
 using MovieShop.Models.DataBase;
+using MovieShop.Models.ViewModels;
 using System.Diagnostics.Metrics;
 using System.Net.Mail;
 
@@ -74,9 +75,29 @@ namespace MovieShop.Services
             return true;
         }
 
-        public List<Order> GetAllOrdersByCustomer(int customerId)
+        public List<OrderViewModel> GetAllOrdersByCustomer(int customerId)
         {
-           var orders = _db.Orders.Where(o =>o.CustomerId == customerId).ToList();
+           var orders = _db.Orders.Where(o =>o.CustomerId == customerId)
+                                  .Include(o=>o.OrderRows)
+                                  .ThenInclude(or=>or.Movie)
+                                  .OrderByDescending(o=>o.OrderDate)
+                                  .Select(o=> new OrderViewModel
+                                  {
+                                      OrderId = o.Id,
+                                      OrderDate = o.OrderDate,
+                                      Totalcost = o.OrderRows.Sum(or => or.Quantity * or.Price),
+                                      Movies = o.OrderRows.Select(or=> new MovieItemViewModel
+                                      {
+                                          PosterPath = or.Movie.PosterPath,
+                                          Title = or.Movie.Title,
+                                          Quantity = or.Quantity,
+                                          Price = or.Price
+                                      })
+                                      .ToList()
+
+
+                                  })
+                                  .ToList();
             return orders;
         }
 
