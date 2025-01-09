@@ -14,6 +14,7 @@
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
+                    <th>Order Quantity</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,6 +26,7 @@
                         <td>@customer.FirstNameBillingAddress</td>
                         <td>@customer.LastNameBillingAddress</td>
                         <td>@customer.EmailAddress</td>
+                        <td>@customer.Orders.Count</td>
                         <td>
                                     <form asp-action="DeleteCustomer" asp-route-id="@customer.Id" method="post" class="d-inline">
                                 @Html.AntiForgeryToken()
