@@ -133,3 +133,16 @@ h3 {
         opacity: 0; /* Fully invisible */
     }
 }
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100; 
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(10px); 
+    padding: 5px;
+    color: white;
+    text-align: center;
+}
