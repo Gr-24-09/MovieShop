@@ -16,7 +16,7 @@
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm bgimagenav border-bottom box-shadow">
             <div class="container-fluid px-0">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MovieShop</a>
+                <a class="navbar-brand px-3" asp-area="" asp-controller="Home" asp-action="Index">MovieShop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -85,8 +85,14 @@
         <div id="layout_message" class="container-fluid text-center alert alert-success">
             @TempData["SuccessMessage"]
         </div>
+            
+        <script>
+                 setTimeout(() => {
+                document.getElementById('layout_message').remove();
+            }, 1500);
+            </script>
     }
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-3 px-3 main-padding">
             @RenderBody()
         </main>
     

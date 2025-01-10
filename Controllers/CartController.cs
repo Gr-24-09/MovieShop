@@ -137,11 +137,6 @@ namespace MovieShop.Controllers
             return RedirectToAction("Checkout", new { orderId = order.Id });
         }
 
-        public IActionResult Checkout()
-        {
-
-            return View();
-        }
 
         [HttpGet]
         public JsonResult GetCustomerByEmail(string email)
@@ -166,19 +161,10 @@ namespace MovieShop.Controllers
             return Json(null);  
         }
 
-        public IActionResult OrderConfirmation(int orderId)
+        public IActionResult Checkout()
         {
-            var order = _db.Orders
-                            .Where(o => o.Id == orderId)
-                            .Include(o => o.OrderRows)
-                            .FirstOrDefault();
 
-            if (order == null)
-            {
-                return NotFound();
-            }
-
-            return View(order); // Pass the order to the view
+            return View(); 
         }
     }
 }

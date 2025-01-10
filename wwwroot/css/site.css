@@ -111,7 +111,7 @@ h3 {
     background-size: 100% auto;
 }
 .bgimagenav {
-    background-color:#29061d;
+/*    background-color:#29061d;*/
     color:aliceblue;
 }
 
@@ -124,17 +124,21 @@ h3 {
     animation: fade-out 2s forwards; /* Apply fade-out animation */
 }
 
-@keyframes fade-out {
-    0% {
-        opacity: 1; /* Fully visible */
-    }
-
-    100% {
-        opacity: 0; /* Fully invisible */
-    }
+#layout_message2 {
+    z-index: 0;
 }
 
-header {
+    @keyframes fade-out {
+        0% {
+            opacity: 1; /* Fully visible */
+        }
+
+        100% {
+            opacity: 0; /* Fully invisible */
+        }
+    }
+
+    header {
     position: fixed;
     top: 0;
     left: 0;
@@ -145,4 +149,8 @@ header {
     padding: 5px;
     color: white;
     text-align: center;
+}
+
+#top-padding {
+    padding-top: 0; /* Zostanie nadpisane przez JavaScript */
 }
