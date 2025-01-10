@@ -7,14 +7,16 @@
 <div class="container-fluid bgimage tbMgn px-0">
     <div class="row"></div>
 <div class="tbMgn">
-    
-    <h1>Welcome.</h1>
+        <br />
+        <br />
+        <br />
+    <h1 >Welcome.</h1>
     <h2>Discover your favourite Movies ,from our good collection.Explore now.</h2>
 </div>
 <br />
 <br />
 <br />
-<div class="row tbMgn">
+    <div class="row tbMgn px-0">
     <form asp-Controller="Movie" asp-action="SearchResult">
         <label for="byParameter"></label>
         <input type="text" name="byParameter" id="byParameter" class="searchBar" placeholder="Search for a Movie......" />
@@ -24,7 +26,7 @@
     <div class="row"></div>
 </div>
 
-<div class="row tbMargin">
+<div class="row tbMargin px-5">
     <div>
         <partial name="_SliderPartial"></partial>
     </div>
