@@ -138,3 +138,21 @@ namespace MovieShop.Areas.Identity.Pages.Account
         }
     }
 }
+
+//basel @example.com
+//B_e123456
+
+//baselAdmin@example.com
+//B_e123456
+
+
+
+//basel.eibo@edge.com
+
+//Basel_123
+
+
+
+
+
+
